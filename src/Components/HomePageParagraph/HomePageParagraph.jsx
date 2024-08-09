@@ -4,7 +4,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const HomePageParagraph = () => {
     return (
-        <div className="mt-10 bg-slate-100 h-[500px]">
+        <div className="mt-10 bg-slate-100 lg:h-[500px]">
             <p className="p-24">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad impedit atque libero totam excepturi blanditiis laudantium illum ea obcaecati ullam, earum commodi sapiente accusantium laboriosam ipsa, adipisci, repudiandae magni iure quisquam? Commodi nihil esse fugit sunt eum explicabo quasi, suscipit illum, accusantium rem omnis fugiat enim incidunt ducimus eos distinctio nostrum voluptatibus? Quam labore velit ad minus quae quis ratione voluptatem molestiae, sunt eligendi ullam possimus consectetur provident, impedit ex dignissimos tempore veniam laboriosam! Sapiente, illo eos laboriosam et quia quibusdam. Ullam quae corrupti iste officiis voluptas. Facilis perspiciatis, placeat sunt deleniti veniam accusantium deserunt voluptate numquam aliquam mollitia sequi.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-4">
@@ -34,7 +34,7 @@ const HomePageParagraph = () => {
                         <FaLocationDot className="text-6xl border rounded-full p-2 text-yellow-500" />
                     </div>
                     <div>
-                        <h1 className="text-xl font-bold">Store Locations</h1>
+                        <h1 className="text-xl font-bold">Our Locations</h1>
                         <p className="text-xl">Dhaka, Bangladesh</p>
                     </div>
                 </div>
