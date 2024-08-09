@@ -83,7 +83,7 @@ const Navbar = () => {
     };
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'green' }}>
+        <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* Desktop Logo */}

@@ -1,9 +1,10 @@
+import Slider from "../../Components/Swiper_Slider/Slider";
 
 
 const Home = () => {
     return (
-        <div>
-            This is Home page
+        <div className="mt-18">
+            <Slider></Slider>
         </div>
     );
 };
