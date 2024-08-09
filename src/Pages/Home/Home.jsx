@@ -1,3 +1,4 @@
+import HomePageParagraph from "../../Components/HomePageParagraph/HomePageParagraph";
 import HoverCard from "../../Components/HoverCard/HoverCard";
 import ImageCard from "../../Components/ImageCard/ImageCard";
 import OrganicInfo from "../../Components/OrganicInfo/OrganicInfo";
@@ -30,10 +31,11 @@ const Home = () => {
                 <h1 className="lg:text-3xl font-bold">Recommended For You</h1>
                 <button className="text-xl font-semibold text-green-500">Shop all</button>
             </div>
-           <div className="space-y-10">
-           <HoverCard></HoverCard>
-           <HoverCard></HoverCard>
-           </div>
+            <div className="space-y-10">
+                <HoverCard></HoverCard>
+                <HoverCard></HoverCard>
+            </div>
+            <HomePageParagraph></HomePageParagraph>
         </div>
     );
 };
