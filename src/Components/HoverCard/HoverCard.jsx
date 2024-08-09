@@ -30,7 +30,7 @@ const HoverCard = () => {
                                 />
                                 <div className='hidden group-hover:block absolute top-[375px] md:top-[270px] lg:top-44 left-44 md:left-32 lg:left-10 text-black p-4'>
                                     <div className='flex gap-3 justify-center '>
-                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlish</button>
+                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlisht</button>
                                         <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><IoMdEye /></span>Quickview</button>
 
                                     </div>
@@ -82,7 +82,7 @@ const HoverCard = () => {
                                 />
                                 <div className='hidden group-hover:block absolute top-[375px] md:top-[270px] lg:top-44 left-44 md:left-32 lg:left-10 text-black p-4'>
                                     <div className='flex gap-3 justify-center '>
-                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlish</button>
+                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlisht</button>
                                         <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><IoMdEye /></span>Quickview</button>
 
                                     </div>
@@ -134,7 +134,7 @@ const HoverCard = () => {
                                 />
                                 <div className='hidden group-hover:block absolute top-[375px] md:top-[270px] lg:top-44 left-44 md:left-32 lg:left-10 text-black p-4'>
                                     <div className='flex gap-3 justify-center '>
-                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlish</button>
+                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlisht</button>
                                         <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><IoMdEye /></span>Quickview</button>
 
                                     </div>
@@ -186,7 +186,7 @@ const HoverCard = () => {
                                 />
                                 <div className='hidden group-hover:block absolute top-[375px] md:top-[265px] lg:top-44 left-44 md:left-32 lg:left-10 text-black p-4'>
                                     <div className='flex gap-3 justify-center '>
-                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlish</button>
+                                        <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><GrFavorite /></span>Wishlisht</button>
                                         <button className='flex flex-col items-center hover:text-green-600 hover:font-bold'><span><IoMdEye /></span>Quickview</button>
 
                                     </div>

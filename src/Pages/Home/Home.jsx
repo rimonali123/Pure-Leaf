@@ -1,5 +1,6 @@
 import HoverCard from "../../Components/HoverCard/HoverCard";
 import ImageCard from "../../Components/ImageCard/ImageCard";
+import OrganicInfo from "../../Components/OrganicInfo/OrganicInfo";
 import StickerCard from "../../Components/StickerCard/StickerCard";
 import Slider from "../../Components/Swiper_Slider/Slider";
 
@@ -15,6 +16,7 @@ const Home = () => {
                 <button className="text-xl font-semibold text-green-500">Shop all</button>
             </div> */}
             <HoverCard></HoverCard>
+            <OrganicInfo></OrganicInfo>
         </div>
     );
 };
