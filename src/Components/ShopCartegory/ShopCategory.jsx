@@ -76,6 +76,29 @@ const ShopCategory = () => {
                 </div>
                 
                 
+               
+                <div>
+                    <Card className='h-full lg:h-[300px] border-2'>
+                    <CardActionArea>
+                        <CardMedia className='h-[450px] lg:h-[250px] w-full'
+                            component="img"
+                            height="140"
+                            image="https://i.ibb.co/8Pf2qXn/eggs-removebg.png"
+                            alt="green iguana"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+
+                                <h1 className='text-3xl lg:text-2xl font-bold text-center'>Diary & Eggs</h1>
+                            </Typography>
+
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                </div>
+
+                
+                
                 <div>
                     <Card className='h-full lg:h-[300px] border-2'>
                     <CardActionArea>
@@ -96,27 +119,6 @@ const ShopCategory = () => {
                 </Card>
                 </div>
                 
-                
-                
-                <div>
-                    <Card className='h-full lg:h-[300px] border-2'>
-                    <CardActionArea>
-                        <CardMedia className='h-[450px] lg:h-[250px] w-full'
-                            component="img"
-                            height="140"
-                            image="https://i.ibb.co/8Pf2qXn/eggs-removebg.png"
-                            alt="green iguana"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-
-                                <h1 className='text-3xl lg:text-2xl font-bold text-center'>Diary & Eggs</h1>
-                            </Typography>
-
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
-                </div>
                 
                 
                 

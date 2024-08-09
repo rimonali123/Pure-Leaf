@@ -26,6 +26,14 @@ const Home = () => {
             <HoverCard></HoverCard>
             <SmallCard></SmallCard>
             <ShopCategory></ShopCategory>
+            <div className="mt-10 mb-10 flex justify-between">
+                <h1 className="lg:text-3xl font-bold">Recommended For You</h1>
+                <button className="text-xl font-semibold text-green-500">Shop all</button>
+            </div>
+           <div className="space-y-10">
+           <HoverCard></HoverCard>
+           <HoverCard></HoverCard>
+           </div>
         </div>
     );
 };
