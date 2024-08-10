@@ -5,14 +5,16 @@ import Footer from "../Components/SharedComponnts/Footer/Footer";
 
 const MainLayout = () => {
     return (
-        <div className="max-w-7xl mx-auto">
-            <div>
-                <Navbar></Navbar>
+        <div>
+
+            <Navbar></Navbar>
+
+            <div className="lg:max-w-7xl mx-auto">
+                <Outlet></Outlet>
             </div>
-            <Outlet></Outlet>
-            <div>
-                <Footer></Footer>
-            </div>
+
+            <Footer></Footer>
+
         </div>
     );
 };

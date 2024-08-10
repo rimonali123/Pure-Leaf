@@ -16,6 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { alpha, Badge, InputBase, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import { NavLink } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -59,7 +60,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const pages = ['Home', 'Shop', 'Page', 'Blog'];
+const pages = [
+    <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/' key={1}>Home</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/shopPage' key={2}>Shop</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/pages' key={3}>Page</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/blogPage' key={4}>Blog</NavLink>,
+    ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
