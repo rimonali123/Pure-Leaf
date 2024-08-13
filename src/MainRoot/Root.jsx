@@ -5,6 +5,10 @@ import Home from "../Pages/Home/Home";
 import ShopPage from "../Pages/ShopPage/ShopPage";
 import BlogPage from "../Pages/BlogPage/BlogPage";
 import AboutUsPage from "../Pages/AboutUs/AboutUsPage";
+import ContactUsPage from "../Pages/ContactUs/ContactUsPage";
+import FaqPage from "../Pages/FaqPag/FaqPage";
+import Login from "../Pages/Login_Register_Page/LoginPage/Login";
+import Register from "../Pages/Login_Register_Page/RegisterPage/Register";
 
   export const router = createBrowserRouter([
     {
@@ -26,6 +30,24 @@ import AboutUsPage from "../Pages/AboutUs/AboutUsPage";
         {
           path:"/aboutUs",
           element: <AboutUsPage></AboutUsPage>
+        },
+        {
+          path:"/contactUs",
+          element: <ContactUsPage></ContactUsPage>
+        },
+        {
+          path:"/faq",
+          element:<FaqPage></FaqPage>
+        },
+        
+        {
+          path:"/loginPage",
+          element: <Login></Login>
+        },
+        
+        {
+          path:"/registerPage",
+          element:<Register></Register>
         },
         
       ]
