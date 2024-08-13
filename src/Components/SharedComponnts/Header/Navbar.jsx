@@ -66,8 +66,21 @@ const pages = [
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/vegetable' key={3}>Vegetable</NavLink>,
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/blogpage' key={4}>Blog</NavLink>,
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const pagesMenus = ['About us', 'Contact Us', 'FAQ'];
+
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const settings = [
+    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/profile' key={8}>Profile</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/account' key={9}>Account</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/dashboard' key={10}>Dashboard</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? '' : ''}  key={11}>Logout</NavLink>,
+];
+    
+const pagesMenus = [
+    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/aboutUs' key={5}>About Us</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/contactUs' key={6}>Contact Us</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/faq' key={7}>FAQ</NavLink>,
+];
 
 
 const Navbar = () => {
