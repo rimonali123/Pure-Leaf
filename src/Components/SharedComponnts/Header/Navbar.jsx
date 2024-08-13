@@ -65,19 +65,24 @@ const pages = [
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/shopPage' key={2}>Shop</NavLink>,
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/vegetable' key={3}>Vegetable</NavLink>,
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/blogpage' key={4}>Blog</NavLink>,
-    ];
+];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pagesMenus = ['About us', 'Contact Us', 'FAQ'];
 
 
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
+    const [anchorElPage, setAnchorElPage] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
+    };
+    const handleOpenPageMenu = (event) => {
+        setAnchorElPage(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
@@ -86,6 +91,9 @@ const Navbar = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+    };
+    const handleClosePageMenu = () => {
+        setAnchorElPage(null);
     };
 
     return (
@@ -182,10 +190,42 @@ const Navbar = () => {
                                 {page}
                             </Button>
                         ))}
+                        {/* thisi is target */}
+                        <MenuItem>
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                <Tooltip title="Open pages">
+                                    <IconButton onClick={handleOpenPageMenu} sx={{ p: 0 }}>
+                                        <h1 className='text-white text-base'>PAGES</h1>
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElPage}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElPage)}
+                                    onClose={handleClosePageMenu}
+                                >
+                                    {pagesMenus.map((pagesMenu) => (
+                                        <MenuItem key={pagesMenu} onClick={handleClosePageMenu}>
+                                            <Typography textAlign="center">{pagesMenu}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+                            </Box>
+                        </MenuItem>
                     </Box>
 
                     {/* Search Bar - Hidden on Small Devices */}
-                    <Search sx={{ display: { xs: 'none', md: 'flex' },  }}>
+                    <Search sx={{ display: { xs: 'none', md: 'flex', }, }}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
@@ -194,14 +234,12 @@ const Navbar = () => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <MenuItem>
-                    <p></p>
-                    </MenuItem>
-                    <div className=' items-center gap-2 hidden md:flex'>
+
+                    <div className=' items-center gap-2 hidden md:flex ml-10'>
                         <p><AddIcCallIcon /></p>
                         <div>
-                        <p>Online order</p>
-                        <p>+93763747349</p>
+                            <p>Online order</p>
+                            <p>+93763747349</p>
                         </div>
                     </div>
                     <MenuItem>

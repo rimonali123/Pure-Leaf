@@ -3,7 +3,7 @@
 const BlogPage = () => {
     return (
         <div className="mt-40 mb-10">
-            <div className="flex gap-20 justify-between">
+            <div className="flex flex-col lg:flex-row gap-20 justify-between">
                 <div>
 
                     <div className="mt-10">
@@ -83,9 +83,9 @@ const BlogPage = () => {
 
 
                 </div>
-                <div className=" w-96 ">
+                <div className=" lg:w-96 mt-10">
                     <h1 className="text-xl font-medium">Blog Categories</h1>
-                    <div className="flex flex-col">
+                    <div className="flex gap-5 lg:flex-col">
                         <button className="text-xl text-start mt-2"> Echo technology</button>
                         <button className="text-xl text-start mt-2"> Environment</button>
                         <button className="text-xl text-start mt-2"> Family</button>
