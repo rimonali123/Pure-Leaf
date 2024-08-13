@@ -18,7 +18,7 @@ const AboutUsPage = () => {
                     good value to their crops.</p>
             </div>
 
-            <div className="mt-10  p-10 bg-slate-100">
+            <div className="mt-20  p-10 bg-slate-100">
 
                 <div className="w-1/2 mx-auto space-y-5 text-center">
                     <h1 className="text-5xl font-medium">What we offers?</h1>
@@ -64,6 +64,34 @@ const AboutUsPage = () => {
 
 
 
+                </div>
+            </div>
+
+            <div className="mt-20 flex flex-col lg:flex-row gap-32 items-center  shadow-2xl p-4">
+                <div className=" w-3/4"  >
+                    <h1 className="text-4xl font-medium mb-3">Why choose <span className="text-5xl text-green-600 uppercase">Pure Leaf</span></h1>
+                    <p className="text-2xl">Nunc tincidunt libero eget libero mattis, sit amet cursus justo imperdiet. Vivamus maximus mi sit amet euismod ornare. Nulla a est vitae nulla vestibulum vestibulum. Curabitur odio diam, vestibulum vel eros vitae, mollis semper erat.
+                        <br />
+                        <br />
+                        <br />
+
+                        Phasellus in est quis metus tincidunt cursus eget at diam. Morbi iaculis quam in convallis lobortis. Duis egestas, risus pretium posuere porttitor, orci erat gravida purus, a mattis diam neque at elit. Duis non mollis ex. Quisque vulputate bibendum dictum. Vestibulum luctus ullamcorper tortor, vel mattis arcu aliquam eget. Nulla molestie facilisis ligula. Praesent in risus malesuada, dapibus sem vitae, varius nunc. Cras ante lectus, lobortis vel ultricies sit amet, volutpat non velit.</p>
+                </div>
+
+                <div className="flex flex-col justify-between gap-10">
+                    <div>
+                        <p className="text-4xl  text-center font-bold">16,4567</p>
+                        <p className="text-xl  text-center ">Organic Products</p>
+                    </div>
+                    <div>
+                        <p className="text-4xl  text-center font-bold">29</p>
+                        <p className="text-xl  text-center ">Countries</p>
+                    </div>
+                    <div>
+                        <p className="text-4xl text-center  font-bold">24045</p>
+                        <p className="text-xl  text-center ">Friendly Farmers</p>
+                    </div>
+                    
                 </div>
             </div>
         </div>
