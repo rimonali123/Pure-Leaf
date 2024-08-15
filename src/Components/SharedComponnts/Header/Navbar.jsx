@@ -70,8 +70,7 @@ const pages = [
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const settings = [
-    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/profile' key={8}>Profile</NavLink>,
-    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/account' key={9}>Account</NavLink>,
+    
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/dashboard' key={10}>Dashboard</NavLink>,
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/loginPage' key={11}>Login</NavLink>,
 ];
@@ -119,7 +118,7 @@ const Navbar = () => {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },

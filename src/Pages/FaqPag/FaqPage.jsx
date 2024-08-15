@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const FaqPage = () => {
@@ -35,6 +36,7 @@ const FaqPage = () => {
                                 <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">Justo libero tellus integer tincidunt justo semper consequat venenatis aliquet imperdiet. Ultricies urna proin fusce nulla pretium sodales vel magna et massa euismod vulputate sed. </p>
                             </details>
                         </div>
+                        <h3 className="mt-10 text-center text-2xl font-medium">Still have more question? <span className="text-green-500 hover:font-extrabold"><Link to='/contactUs'>Contact us</Link></span></h3>
                     </div>
                 </section>
             </div>

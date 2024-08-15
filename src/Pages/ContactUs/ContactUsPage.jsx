@@ -1,5 +1,6 @@
 
 
+
 const ContactUsPage = () => {
     return (
         <div className="mt-28">
@@ -40,10 +41,10 @@ const ContactUsPage = () => {
 
             <div className="mt-10 mb-10 flex flex-col lg:flex-row  gap-10 ">
                 <div className="bg-slate-100 p-5 ">
-                    <h1 className="text-xl font-bold">Have any qu estion?</h1>
+                    <h1 className="text-xl font-bold">Have any question?</h1>
                     <p>Your email address will not be published. Required fileds are marked*</p>
                     <form className="mt-5 flex flex-col gap-10">
-                        <input className="w-full p-3 rounded-lg  " type="text" required placeholder="Name*" />
+                        <input className="w-full p-3 rounded-lg  " type="text" required placeholder="Name*"  />
                         <input className="w-full p-3 rounded-lg  " type="email" required placeholder="Email*" />
                         <input className="w-full p-3 rounded-lg  " type="text" placeholder="Subject" />
                         <textarea className="w-full p-3 rounded-lg  " name="" rows={5} id="" required placeholder="Message*" />
@@ -54,7 +55,7 @@ const ContactUsPage = () => {
                 </div>
 
                 <div>
-                    map
+               
                 </div>
 
 

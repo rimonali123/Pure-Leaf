@@ -51,10 +51,11 @@ const Register = () => {
                             {errors.confirmPassword && <span className="text-red-600">This field is required</span>}
                         </div>
                         <div className="mt-5 text-xl font-medium">
+                            <h1 className="mb-5">Please Select Your Account type</h1>
                             <select {...register("accountType", { required: true })}>
-                                <option defaultValue="Acount Type">Acount Type</option>
+                                <option defaultValue="Account Type">Account Type</option>
                                 <option value="female">User</option>
-                                <option value="male">Seler</option>
+                                <option value="male">Seller</option>
                             </select>
                             {errors.accountType && <span className="text-red-600">This field is required</span>}
                         </div>
@@ -76,7 +77,7 @@ const Register = () => {
                             <button className="text-3xl font-semibold flex gap-2 items-center hover:text-4xl hover:text-green-600"><span><FaGithub /></span>Github Login</button>
                             
                         </div>
-                        <h2 className="text-xl mt-10">Already have an account? please <span className="underline text-green-500 font-bold hover:text-2xl"><Link to="/loginPage  ">Login</Link></span></h2>
+                        <h2 className="text-xl mt-10">Already have an account? please <span className="underline text-green-500 font-bold hover:text-2xl"><Link to="/loginPage">Login</Link></span></h2>
                     </div>
                 </div>
 
