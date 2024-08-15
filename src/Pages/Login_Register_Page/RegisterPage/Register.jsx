@@ -1,17 +1,39 @@
 import { useForm } from "react-hook-form"
 import img from '../../../assets/login.svg';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
 import Divider from '@mui/material/Divider';
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
+    
+    const {createUser} = useContext(AuthContext);
+    const navigate = useNavigate()
+
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        const {email, password }  = data;
+        createUser(email, password)
+        .then(result =>{
+            console.log(result.user)
+            toast.success("Registration successful")
+            navigate(location?.state ? location.state : "/");
+            
+        })
+    
+        .catch(error => {
+            console.error(error.message)
+            toast.error('This email already Exist')
+        })
+    
+        console.log(data)
+    }
     return (
         <div className="mt-20 mb-10">
             <div className="w-full p-10 bg-white shadow-2xl flex flex-col lg:flex-row gap-10">
@@ -75,7 +97,7 @@ const Register = () => {
                         <div className="flex justify-between">
                             <button className="text-3xl font-semibold flex gap-2 items-center hover:text-4xl hover:text-green-600"><span><FcGoogle /></span>Google Login</button>
                             <button className="text-3xl font-semibold flex gap-2 items-center hover:text-4xl hover:text-green-600"><span><FaGithub /></span>Github Login</button>
-                            
+
                         </div>
                         <h2 className="text-xl mt-10">Already have an account? please <span className="underline text-green-500 font-bold hover:text-2xl"><Link to="/loginPage">Login</Link></span></h2>
                     </div>

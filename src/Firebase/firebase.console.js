@@ -6,16 +6,16 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  Vite_apiKey: import.meta.env.apiKey,
-  Vite_authDomain: import.meta.env.authDomain,
-  Vite_projectId: import.meta.env.projectId,
-  Vite_storageBucket: import.meta.env.storageBucket,
-  Vite_messagingSenderId: import.meta.env.messagingSenderId,
-  Vite_appId: import.meta.env.appId
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-export default auth;
+export default (auth);

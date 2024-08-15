@@ -47,7 +47,7 @@ const HoverCard = () => {
                                     <div className='flex gap-2 items-center'>
                                         <Rating
                                             style={{ maxWidth: 180 }}
-                                            value={5}
+                                            value={3}
                                             readOnly
                                         />
                                         <p className='text-3xl font-bold'>3</p>
@@ -100,7 +100,7 @@ const HoverCard = () => {
                                     <div className='flex gap-2 items-center'>
                                         <Rating
                                             style={{ maxWidth: 180 }}
-                                            value={5}
+                                            value={3}
                                             readOnly
                                         />
                                         <p className='text-3xl font-bold'>3</p>
@@ -152,7 +152,7 @@ const HoverCard = () => {
                                     <div className='flex gap-2 items-center'>
                                         <Rating
                                             style={{ maxWidth: 180 }}
-                                            value={5}
+                                            value={3}
                                             readOnly
                                         />
                                         <p className='text-3xl font-bold'>3</p>
@@ -204,7 +204,7 @@ const HoverCard = () => {
                                     <div className='flex gap-2 items-center'>
                                         <Rating
                                             style={{ maxWidth: 180 }}
-                                            value={5}
+                                            value={3}
                                             readOnly
                                         />
                                         <p className='text-3xl font-bold'>3</p>
@@ -256,7 +256,7 @@ const HoverCard = () => {
                                     <div className='flex gap-2 items-center'>
                                         <Rating
                                             style={{ maxWidth: 180 }}
-                                            value={5}
+                                            value={3}
                                             readOnly
                                         />
                                         <p className='text-3xl font-bold'>3</p>
