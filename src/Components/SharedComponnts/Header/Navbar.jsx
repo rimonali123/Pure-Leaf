@@ -71,7 +71,7 @@ const pages = [
 
 const settings = [
     
-    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/dashboard' key={10}>Account</NavLink>,
+    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/accountPage' key={10}>Account</NavLink>,
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/loginPage' key={11}>Login</NavLink>,
 ];
     

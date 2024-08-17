@@ -9,6 +9,8 @@ import ContactUsPage from "../Pages/ContactUs/ContactUsPage";
 import FaqPage from "../Pages/FaqPag/FaqPage";
 import Login from "../Pages/Login_Register_Page/LoginPage/Login";
 import Register from "../Pages/Login_Register_Page/RegisterPage/Register";
+import AccountPage from "../Pages/AccountPage/AccountPage";
+import WellcomePage from "../Pages/AccountPage/DashboardWellcomePage/WellcomePage";
 
   export const router = createBrowserRouter([
     {
@@ -49,7 +51,19 @@ import Register from "../Pages/Login_Register_Page/RegisterPage/Register";
           path:"/registerPage",
           element:<Register></Register>
         },
-        
+       
       ]
     },
+
+    {
+      path: "/accountPage",
+      element: <AccountPage></AccountPage>,
+      children: [
+        {
+            index:true,
+            element:<WellcomePage></WellcomePage>
+        },
+
+      ]
+    }
   ]);
