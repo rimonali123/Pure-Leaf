@@ -11,6 +11,10 @@ import Login from "../Pages/Login_Register_Page/LoginPage/Login";
 import Register from "../Pages/Login_Register_Page/RegisterPage/Register";
 import AccountPage from "../Pages/AccountPage/AccountPage";
 import WellcomePage from "../Pages/AccountPage/DashboardWellcomePage/WellcomePage";
+// import Dashboard from "../Pages/AccountDashboard/DashboardPage/Dashboard";
+import OrderPage from "../Pages/AccountDashboard/DashboardOrderPage/OrderPage";
+import DashboardAddressPage from "../Pages/AccountDashboard/DashboardAddressPage/DashboardAddressPage";
+import AccountDetailsPage from "../Pages/AccountDashboard/DashboardAccountDetailsPage/AccountDetailsPage";
 
   export const router = createBrowserRouter([
     {
@@ -62,6 +66,22 @@ import WellcomePage from "../Pages/AccountPage/DashboardWellcomePage/WellcomePag
         {
             index:true,
             element:<WellcomePage></WellcomePage>
+        },
+          {
+            path: "dashboardPage",
+            element: <WellcomePage></WellcomePage>
+          },
+        {
+          path: "orderPage",
+          element: <OrderPage></OrderPage>
+        },
+        {
+          path: "addressPage",
+          element: <DashboardAddressPage></DashboardAddressPage>
+        },
+        {
+          path: "accountDetailsPage",
+          element: <AccountDetailsPage></AccountDetailsPage>
         },
 
       ]
