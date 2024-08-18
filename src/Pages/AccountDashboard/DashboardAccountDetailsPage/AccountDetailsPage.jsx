@@ -13,7 +13,7 @@ const AccountDetailsPage = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)} className="p-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="p-4 space-y-8">
                 <div className="flex flex-col gap-2">
                     <label className="font-bold">Your Name<span className="text-red-500">*</span></label>
                     <input type="text"  className="border p-2 rounded-xl"
