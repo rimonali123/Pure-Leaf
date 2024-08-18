@@ -66,7 +66,10 @@ const Register = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                         <div className="flex flex-col">
                             <label className="text-xl font-medium">Your Name*</label>
-                            <input className="border p-2 w-full rounded-xl " type="text" placeholder="Name" {...register("name", { required: true })} />
+                            <input className="border p-2 w-full rounded-xl"
+                             type="text" 
+                             placeholder="Name" 
+                             {...register("name", { required: true })} />
                             {errors.name && <span className="text-red-600">This field is required</span>}
                         </div>
 
