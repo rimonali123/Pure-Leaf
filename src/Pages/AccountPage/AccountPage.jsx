@@ -9,7 +9,7 @@ const AccountPage = () => {
         <div>
             <Navbar></Navbar>
             <div className="mt-24 lg:max-w-7xl mx-auto">
-                <div className="flex flex-col lg:flex-row gap-10 border border-yellow-500 h-screen">
+                <div className="flex flex-col lg:flex-row gap-10 border border-yellow-500 h-full">
                     <div className="border border-red-500 lg:w-1/2 p-4 flex  flex-col">
                         <NavLink to="/accountPage/dashboardPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
                             <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><SlSpeedometer /></span>Dashboard</button>
@@ -32,7 +32,7 @@ const AccountPage = () => {
 
                     </div>
 
-                    <div className="border border-green-500 w-full">
+                    <div className="border border-green-500 w-full h-full">
 
                         <Outlet></Outlet>
                     </div>

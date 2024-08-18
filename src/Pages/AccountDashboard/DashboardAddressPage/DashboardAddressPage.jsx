@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const DashboardAddressPage = () => {
@@ -8,7 +9,7 @@ const DashboardAddressPage = () => {
                 <div className="w-full border">
                     <div className="flex justify-between items-center bg-slate-50 border">
                         <h4 className="bg-slate-100 text-xl font-semibold p-4">Billing address</h4>
-                        <button className="p-4 hover:text-green-500">Add</button>
+                       <Link to="/accountPage/addressPage/billingAddressEdit"> <button className="p-4 hover:text-green-500">Add</button></Link>
                     </div>
                     <p className="text-center py-4">You have not set up this type of address yet.</p>
                 </div>
@@ -16,7 +17,7 @@ const DashboardAddressPage = () => {
                 <div className="w-full border">
                     <div className="flex justify-between items-center bg-slate-50 border">
                         <h4 className="bg-slate-100 text-xl font-semibold p-4">Shipping address</h4>
-                        <button className="p-4 hover:text-green-500">Add</button>
+                        <Link to="/accountPage/addressPage/shippingAddressEdit"> <button className="p-4 hover:text-green-500">Add</button></Link>
                     </div>
                     <p className="text-center py-4">You have not set up this type of address yet.</p>
                 </div>

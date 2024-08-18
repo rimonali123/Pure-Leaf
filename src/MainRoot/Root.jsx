@@ -15,6 +15,8 @@ import WellcomePage from "../Pages/AccountPage/DashboardWellcomePage/WellcomePag
 import OrderPage from "../Pages/AccountDashboard/DashboardOrderPage/OrderPage";
 import DashboardAddressPage from "../Pages/AccountDashboard/DashboardAddressPage/DashboardAddressPage";
 import AccountDetailsPage from "../Pages/AccountDashboard/DashboardAccountDetailsPage/AccountDetailsPage";
+import AddressForm from "../Pages/AccountPage/DashboardAddressForm/AddressForm";
+import ShippingAddressForm from "../Pages/AccountPage/DashboardAddressForm/ShippingAddressForm";
 
   export const router = createBrowserRouter([
     {
@@ -82,6 +84,14 @@ import AccountDetailsPage from "../Pages/AccountDashboard/DashboardAccountDetail
         {
           path: "accountDetailsPage",
           element: <AccountDetailsPage></AccountDetailsPage>
+        },
+        {
+          path: "addressPage/billingAddressEdit",
+          element: <AddressForm></AddressForm>
+        },
+        {
+          path: "addressPage/shippingAddressEdit",
+          element: <ShippingAddressForm></ShippingAddressForm>
         },
 
       ]
