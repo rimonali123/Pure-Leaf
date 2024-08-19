@@ -2,11 +2,11 @@
 
 const OrderPage = () => {
     return (
-        <div className="bg-slate-100 h-full">
+        <div className="bg-slate-100 h-screen">
             <h1 className="text-4xl font-medium text-center">M<span className="text-green-500">y</span> <span className="text-red-500">O</span>rders</h1>
             <p className="text-xl font-medium mt-5 text-center">Your order will be shipped within 7 days</p>
 
-            <div className="flex gap-5 w-full mt-2 p-4 ">
+            <div className="flex flex-col lg:flex-row gap-5 w-full mt-2 p-4 ">
 
                 <div className=" lg:w-[500px]">
                     <div className="flex gap-2 items-center bg-white  py-12 p-4 shadow-2xl">

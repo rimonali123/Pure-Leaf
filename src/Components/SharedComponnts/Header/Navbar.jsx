@@ -207,7 +207,7 @@ const Navbar = () => {
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 <Tooltip title="Open pages">
                                     <IconButton onClick={handleOpenPageMenu} sx={{ p: 0 }}>
-                                        <h1 className='text-white text-base'>PAGES</h1>
+                                        <h1 className='text-white text-sm'>PAGES</h1>
                                     </IconButton>
                                 </Tooltip>
                                 <Menu

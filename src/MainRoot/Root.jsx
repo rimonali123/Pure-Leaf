@@ -17,6 +17,9 @@ import DashboardAddressPage from "../Pages/AccountDashboard/DashboardAddressPage
 import AccountDetailsPage from "../Pages/AccountDashboard/DashboardAccountDetailsPage/AccountDetailsPage";
 import AddressForm from "../Pages/AccountPage/DashboardAddressForm/AddressForm";
 import ShippingAddressForm from "../Pages/AccountPage/DashboardAddressForm/ShippingAddressForm";
+import AddItemForm from "../Pages/AccountDashboard/AddItemForm/AddItemForm";
+import ManageProduct from "../Pages/AccountDashboard/ManageProduct/ManageProduct";
+import ManageUser from "../Pages/AccountDashboard/ManageUser/ManageUser";
 
   export const router = createBrowserRouter([
     {
@@ -92,6 +95,18 @@ import ShippingAddressForm from "../Pages/AccountPage/DashboardAddressForm/Shipp
         {
           path: "addressPage/shippingAddressEdit",
           element: <ShippingAddressForm></ShippingAddressForm>
+        },
+        {
+          path: "addItemPage",
+          element: <AddItemForm></AddItemForm>
+        },
+        {
+          path: "manageProdct",
+          element: <ManageProduct></ManageProduct>
+        },
+        {
+          path: "manageUser",
+          element: <ManageUser></ManageUser>
         },
 
       ]

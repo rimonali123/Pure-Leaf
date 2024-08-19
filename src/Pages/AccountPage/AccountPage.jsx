@@ -1,6 +1,8 @@
 import { SlSpeedometer } from "react-icons/sl";
 import { LuShoppingCart } from "react-icons/lu";
 import { CiLocationOn, CiUser, CiLogout } from "react-icons/ci";
+import { AiFillDatabase } from "react-icons/ai";
+import { MdPlaylistAdd , MdManageAccounts } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "../../Components/SharedComponnts/Header/Navbar";
 
@@ -25,6 +27,19 @@ const AccountPage = () => {
 
                         <NavLink to="/accountPage/accountDetailsPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
                             <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><CiUser /></span>Account Details</button>
+                        </NavLink>
+
+
+                        <NavLink to="/accountPage/addItemPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><MdPlaylistAdd /></span>Add Product</button>
+                        </NavLink>
+
+                        <NavLink to="/accountPage/manageProdct" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><AiFillDatabase /></span>Manage Product</button>
+                        </NavLink>
+
+                        <NavLink to="/accountPage/manageUser" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><MdManageAccounts  /></span>Manage User</button>
                         </NavLink>
 
 
