@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form"
 import img from '../../../assets/login.svg';
 import { useState } from "react";
-import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Divider from '@mui/material/Divider';
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -50,12 +50,12 @@ const Login = () => {
                         <div>
                             <Divider className="text-3xl font-bold">OR</Divider>
                         </div>
-                        <div className="flex justify-between">
+                        {/* <div className="flex justify-between">
                             <button className="text-3xl font-semibold flex gap-2 items-center hover:text-4xl hover:text-green-600"><span><FcGoogle /></span>Google Login</button>
                             <button className="text-3xl font-semibold flex gap-2 items-center hover:text-4xl hover:text-green-600"><span><FaGithub /></span>Github Login</button>
                             
-                        </div>
-                        <h2 className="text-xl mt-10">Create new account? please <span className="underline text-green-500 font-bold hover:text-2xl"><Link to="/registerPage">Register</Link></span></h2>
+                        </div> */}
+                        <h2 className="text-xl mt-5">Create new account? please <span className="underline text-green-500 font-bold hover:text-2xl"><Link to="/registerPage">Register</Link></span></h2>
                     </div>
                 </div>
 

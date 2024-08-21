@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form"
 import img from '../../../assets/login.svg';
 import { useContext, useState } from "react";
-import { FaEye, FaEyeSlash, FaGithub } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Divider from '@mui/material/Divider';
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
@@ -91,18 +91,7 @@ const Register = () => {
 
     }
 
-    // const handleGoogleLogin = () => {
-    //     googleLogin()
-    //         .then(result => {
-    //             console.log(result?.user);
-    //             toast.success('Google Registration successfully');
-    //             navigate("/"); 
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //             toast.error('Something error');
-    //         });
-    // };
+    
 
 
     return (
@@ -184,12 +173,12 @@ const Register = () => {
                         <div>
                             <Divider className="text-3xl font-bold">OR</Divider>
                         </div>
-                        <div className="flex justify-between">
+                        {/* <div className="flex justify-between">
                             <button className="text-3xl font-semibold flex gap-2 items-center hover:text-4xl hover:text-green-600"><span><FcGoogle /></span>Google Login</button>
                             <button className="text-3xl font-semibold flex gap-2 items-center hover:text-4xl hover:text-green-600"><span><FaGithub /></span>Github Login</button>
 
-                        </div>
-                        <h2 className="text-xl mt-10">Already have an account? please <span className="underline text-green-500 font-bold hover:text-2xl"><Link to="/loginPage">Login</Link></span></h2>
+                        </div> */}
+                        <h2 className="text-xl mt-5">Already have an account? please <span className="underline text-green-500 font-bold hover:text-2xl"><Link to="/loginPage">Login</Link></span></h2>
                     </div>
                 </div>
 

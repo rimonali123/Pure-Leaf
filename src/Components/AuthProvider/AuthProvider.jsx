@@ -64,13 +64,13 @@ const AuthProvider = ({children}) => {
            
             if(currentUser){
                 
-                axios.post(`http://localhost:5000/jwt`, loggedUser, {withCredentials: true})
+                axios.post(`${import.meta.env.VITE_BASE_URL}/jwt`, loggedUser, {withCredentials: true})
                 .then(res =>{
                     console.log('token response',res.data);
                 })
             }
             else{
-                axios.post(`http://localhost:5000/logOut`,loggedUser, {
+                axios.post(`${import.meta.env.VITE_BASE_URL}/logOut`,loggedUser, {
                     withCredentials: true
                 })
                 .then(res => {

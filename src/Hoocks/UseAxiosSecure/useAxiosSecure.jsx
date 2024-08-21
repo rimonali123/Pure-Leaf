@@ -7,7 +7,7 @@ import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: `${import.meta.env.VITE_BASE_URL}`
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
