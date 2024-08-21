@@ -22,6 +22,7 @@ const Home = () => {
             return res.data;
         }
     });
+    
     return (
         <div className="mt-20">
             <Slider></Slider>
