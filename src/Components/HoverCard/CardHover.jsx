@@ -19,7 +19,7 @@ const CardHover = ({data}) => {
                     <div className="">
                         <div className='hover:scale-105'>
                             <Card className='border-0 '>
-                                <CardMedia className=' py-4 md:p-4 lg:p-4 w-44 h-52'
+                                <CardMedia className=' py-4 md:p-4 lg:p-4 h-52'
                                     component="img"
                                     alt="green iguana"
                                     height="140"
@@ -34,9 +34,9 @@ const CardHover = ({data}) => {
                                 </div>
 
                                 <CardContent>
-                                    <Typography gutterBottom variant="h5" component="div">
+                                    <div className='text-base'>
                                         {name}
-                                    </Typography>
+                                    </div>
                                     <Typography variant="body2" color="text.secondary" fontSize={20} fontWeight={700} sx={{}}>
                                         {weight}
                                     </Typography>
