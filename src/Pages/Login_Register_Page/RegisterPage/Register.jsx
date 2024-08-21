@@ -8,9 +8,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
+import useAxiosPublic from "../../../Hoocks/UseAxiosPublic/useAxiosPublic";
+import useAxiosSecure from "../../../Hoocks/UseAxiosSecure/useAxiosSecure";
 
+
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_API;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
 const Register = () => {
+
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const { createUser } = useContext(AuthContext);
     const navigate = useNavigate()
@@ -18,28 +27,68 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const onSubmit = (data) => {
-        const { email, password } = data;
-        createUser(email, password)
-            .then(result => {
-                console.log(result?.user);
 
-                updateProfile(result.user, {
-                    displayName: data.name,
-                    photoURL: data.photo
-                }).then(() => {
-                }).catch((error) => {
-                    console.error(error)
-                });
 
-                navigate(location?.state ? location?.state : "/")
-                toast.success('Registration successfully')
-            })
-            .catch(error => {
-                console.log(error.message)
+    const onSubmit = async (data) => {
 
-            })
-        console.log(data)
+        const imageFile = { image: data.profileUrl[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                "content-type": "multipart/form-data",
+            }
+        });
+        console.log(res.data)
+
+        if (res.data.success) {
+            const { email, password } = data;
+
+            createUser(email, password)
+                .then(result => {
+                    console.log(result?.user);
+
+                    updateProfile(result?.user, {
+                        displayName: data.name,
+                        photoURL: res.data.data.display_url
+                    }).then(() => {
+
+                        // send user data to mongo db
+                        const userData = {
+                            name: data.name,
+                            email: data.email,
+                            photoUrl: res.data.data.display_url,
+                            password: data.password,
+                            confirmPassword: data.confirmPassword,
+                            accountType: data.accountType
+                        }
+                       
+                        
+                        axiosSecure.post('/usersData', userData)
+                        .then(res => {
+                            console.log(res.data)
+                            console.log('userData added to database .........')
+                        })
+                        .catch(error => {
+                            console.error(error.message)
+                        })
+                    console.log(userData)
+                    
+
+                    }).catch((error) => {
+                        console.error(error.message)
+                    });
+
+                    navigate("/")
+                    toast.success('Registration successfully')
+                })
+                .catch(error => {
+                    console.log(error.message)
+
+                })
+            console.log(data)
+
+        }
+
+
     }
 
     // const handleGoogleLogin = () => {
@@ -67,9 +116,9 @@ const Register = () => {
                         <div className="flex flex-col">
                             <label className="text-xl font-medium">Your Name*</label>
                             <input className="border p-2 w-full rounded-xl"
-                             type="text" 
-                             placeholder="Name" 
-                             {...register("name", { required: true })} />
+                                type="text"
+                                placeholder="Name"
+                                {...register("name", { required: true })} />
                             {errors.name && <span className="text-red-600">This field is required</span>}
                         </div>
 
@@ -100,12 +149,14 @@ const Register = () => {
                             </span>
                             {errors.confirmPassword && <span className="text-red-600">This field is required</span>}
                         </div>
+
                         <div className="flex flex-col">
                             <label className="text-xl font-medium">Profile image</label>
                             <fieldset className="w-full space-y-1 dark:text-gray-800">
-                               
+
                                 <div className="flex mt-2">
-                                    <input type="file" name="files" id="files" className=" border-2 border-dashed rounded-md dark:border-gray-300 dark:text-gray-600 dark:bg-gray-100" />
+                                    <input type="file" name="files" id="files" className=" border-2 border-dashed rounded-md dark:border-gray-300 dark:text-gray-600 dark:bg-gray-100"
+                                        {...register("profileUrl", { required: true })} />
                                 </div>
                             </fieldset>
 
@@ -114,7 +165,7 @@ const Register = () => {
                         <div className="mt-5 text-xl font-medium">
                             <h1 className="mb-5">Please Select Your Account type</h1>
                             <select {...register("accountType", { required: true })} className="border-2 border-red-400 p-4 px-12">
-                               
+
                                 <option value="user">User</option>
                                 <option value="seller">Seller</option>
                             </select>
