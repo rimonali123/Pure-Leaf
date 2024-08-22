@@ -21,6 +21,7 @@ import AddItemForm from "../Pages/AccountDashboard/AddItemForm/AddItemForm";
 import ManageProduct from "../Pages/AccountDashboard/ManageProduct/ManageProduct";
 import ManageUser from "../Pages/AccountDashboard/ManageUser/ManageUser";
 import ViewCart from "../Pages/ViewCart/ViewCart";
+import CheckOutpage from "../Pages/CheckOutPage/CheckOutpage";
 
   export const router = createBrowserRouter([
     {
@@ -64,6 +65,11 @@ import ViewCart from "../Pages/ViewCart/ViewCart";
         {
           path:"/viewCart",
           element:<ViewCart></ViewCart>
+        },
+       
+        {
+          path:"/checkOutPage",
+          element:<CheckOutpage></CheckOutpage>
         },
        
       ]

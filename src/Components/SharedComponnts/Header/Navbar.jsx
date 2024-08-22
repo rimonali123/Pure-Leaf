@@ -300,8 +300,8 @@ const Navbar = () => {
                                 <Box sx={{
 
                                     position: 'absolute',
-                                    top: { xs: '5%',  md: '10%', lg:'10%' }, 
-                                    left: { xs: '10%',  md: '50%', lg:'65%'},
+                                    top: { xs: '5%', md: '10%', lg: '10%' },
+                                    left: { xs: '10%', md: '50%', lg: '65%' },
                                     // transform: 'translate(-50%, -50%)',
                                     width: 400,
                                     maxHeight: { xs: "80%", md: "80%", lg: "80%" },
@@ -323,9 +323,12 @@ const Navbar = () => {
                                     </Typography>
 
                                     <div className="flex gap-2 items-center justify-between mt-5">
-                                        <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>Checkout</button>
+                                        <Link to='/checkOutPage'>
+                                            <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>Checkout</button>
+                                        </Link>
+
                                         <Link to='/viewCart'>
-                                        <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>View cart</button>
+                                            <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>View cart</button>
                                         </Link>
                                     </div>
                                 </Box>
