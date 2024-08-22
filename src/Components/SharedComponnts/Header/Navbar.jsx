@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import { alpha, Badge,  InputBase, styled } from '@mui/material';
+import { alpha, Badge, InputBase, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import { NavLink } from 'react-router-dom';
@@ -65,17 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const style = {
-    position: 'absolute',
-    top: '10%',
-    left: '65%',
-    // transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 2,
-};
+
 
 const pages = [
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/' key={1}>Home</NavLink>,
@@ -128,11 +118,11 @@ const Navbar = () => {
     const handleClosePageMenu = () => {
         setAnchorElPage(null);
     };
-const axiosSecure = useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
 
 
 
-    const { data: cartData } = useQuery({
+    const { data: cartData, refetch } = useQuery({
         queryKey: ['cartItemData'],
         queryFn: async () => {
             const res = await axiosSecure.get('/cartItemData');
@@ -140,7 +130,7 @@ const axiosSecure = useAxiosSecure();
         }
     });
     // console.log(cartData)
-
+    refetch()
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
             <Container maxWidth="xl">
@@ -307,22 +297,27 @@ const axiosSecure = useAxiosSecure();
                                 aria-labelledby="modal-modal-title"
                                 aria-describedby="modal-modal-description"
                             >
-                                <Box sx={style}>
-                                    {/* <Cartmodal></Cartmodal> */}
-                                    {cartData?.map(cart => <Cartmodal key={cart._id} cart={cart}></Cartmodal>)}
-                                    {/* <CardMedia
-                                        component="img"
-                                        className='h-60 w-10'
-                                        image="https://i.ibb.co/G2w6FNL/Organic-Avocado.jpg"
-                                        alt="Paella dish"
-                                    />
-                                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                                        Text in a modal
-                                    </Typography>
+                                <Box sx={{
 
-                                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                        Price: $120
-                                    </Typography> */}
+                                    position: 'absolute',
+                                    top: { xs: '5%',  md: '10%', lg:'10%' }, 
+                                    left: { xs: '10%',  md: '50%', lg:'65%'},
+                                    // transform: 'translate(-50%, -50%)',
+                                    width: 400,
+                                    maxHeight: { xs: "80%", md: "80%", lg: "80%" },
+                                    bgcolor: 'background.paper',
+                                    border: '2px solid #000',
+                                    boxShadow: 24,
+                                    p: 2,
+                                    overflow: "auto"
+
+                                }}>
+                                    <div className='flex flex-col'>
+                                        {cartData?.map(cart => <Cartmodal key={cart._id} cart={cart}></Cartmodal>)}
+                                    </div>
+
+
+
                                     <Typography className='flex items-center justify-between text-2xl font-bold'>
                                         Total price : <span className='text-2xl text-red-500'> $00</span>
                                     </Typography>
