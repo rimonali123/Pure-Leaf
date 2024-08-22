@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const ViewCart = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: cartData } = useQuery({
+    const { data: cartData, refetch } = useQuery({
         queryKey: ['cartItemData'],
         queryFn: async () => {
             const res = await axiosSecure.get('/cartItemData');
@@ -20,7 +20,7 @@ const ViewCart = () => {
             <div className="flex gap-10 flex-col lg:flex-row">
                 <div className="w-full ">
                     <div className='flex flex-col '>
-                        {cartData?.map(cart => <ViewCartItem key={cart._id} cart={cart}></ViewCartItem>)}
+                        {cartData?.map(cart => <ViewCartItem key={cart._id} cart={cart} refetch={refetch}></ViewCartItem>)}
                     </div>
                     <div className="p-4">
                         <Link to='/shopPage'><button className='text-green-500 text-xl'>Continue Shopping</button></Link>

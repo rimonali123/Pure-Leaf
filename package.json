@@ -30,6 +30,7 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.26.0",
     "sort-by": "^0.0.2",
+    "sweetalert2": "^11.12.4",
     "swiper": "^11.1.9"
   },
   "devDependencies": {

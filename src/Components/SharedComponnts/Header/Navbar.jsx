@@ -130,7 +130,7 @@ const Navbar = () => {
         }
     });
     // console.log(cartData)
-    refetch()
+   
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
             <Container maxWidth="xl">
@@ -313,7 +313,7 @@ const Navbar = () => {
 
                                 }}>
                                     <div className='flex flex-col'>
-                                        {cartData?.map(cart => <Cartmodal key={cart._id} cart={cart}></Cartmodal>)}
+                                        {cartData?.map(cart => <Cartmodal key={cart._id} cart={cart} refetch={refetch}></Cartmodal>)}
                                     </div>
 
 
