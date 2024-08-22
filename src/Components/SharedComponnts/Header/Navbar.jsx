@@ -13,11 +13,12 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import { alpha, Badge, InputBase, styled } from '@mui/material';
+import { alpha, Badge,  InputBase, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import { NavLink } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
+import Cartmodal from './CartModal/Cartmodal';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -71,7 +72,7 @@ const style = {
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    p: 2,
 };
 
 const pages = [
@@ -293,12 +294,28 @@ const Navbar = () => {
                                 aria-describedby="modal-modal-description"
                             >
                                 <Box sx={style}>
+                                    <Cartmodal></Cartmodal>
+                                    {/* <CardMedia
+                                        component="img"
+                                        className='h-60 w-10'
+                                        image="https://i.ibb.co/G2w6FNL/Organic-Avocado.jpg"
+                                        alt="Paella dish"
+                                    />
                                     <Typography id="modal-modal-title" variant="h6" component="h2">
                                         Text in a modal
                                     </Typography>
+
                                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                        Price: $120
+                                    </Typography> */}
+                                    <Typography className='flex items-center justify-between text-2xl font-bold'>
+                                        Total price : <span className='text-2xl text-red-500'> $00</span>
                                     </Typography>
+
+                                    <div className="flex gap-2 items-center justify-between mt-5">
+                                        <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>Checkout</button>
+                                        <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>View cart</button>
+                                    </div>
                                 </Box>
                             </Modal>
                         </div>
