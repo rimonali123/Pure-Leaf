@@ -17,6 +17,7 @@ import { alpha, Badge, InputBase, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import { NavLink } from 'react-router-dom';
+import Modal from '@mui/material/Modal';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -60,6 +61,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+
+const style = {
+    position: 'absolute',
+    top: '10%',
+    left: '65%',
+    // transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
+
 const pages = [
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/' key={1}>Home</NavLink>,
     <NavLink className={({ isActive }) => isActive ? 'border p-2 rounded-lg text-xl' : ''} to='/shopPage' key={2}>Shop</NavLink>,
@@ -70,11 +84,11 @@ const pages = [
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const settings = [
-    
+
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/accountPage' key={10}>Account</NavLink>,
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/loginPage' key={11}>Login</NavLink>,
 ];
-    
+
 const pagesMenus = [
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/aboutUs' key={5}>About Us</NavLink>,
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/contactUs' key={6}>Contact Us</NavLink>,
@@ -86,6 +100,10 @@ const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [anchorElPage, setAnchorElPage] = useState(null);
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -255,16 +273,36 @@ const Navbar = () => {
                         </div>
                     </div>
                     <MenuItem>
-                        <IconButton
-                            size="large"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                        >
-                            <Badge badgeContent={17} color="error">
-                                <ShoppingCartIcon />
-                            </Badge>
-                        </IconButton>
-                        <p>Cart</p>
+                        <div>
+                            <IconButton onClick={handleOpen}
+                                size="large"
+                                aria-label="show 17 new notifications"
+                                color="inherit"
+                                className='flex items-center flex-row-reverse gap-2'
+                            >
+                                <Badge badgeContent={17} color="error">
+                                    <ShoppingCartIcon />
+                                </Badge>
+                                <p className='text-base'>Cart</p>
+                            </IconButton>
+
+                            <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                <Box sx={style}>
+                                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                                        Text in a modal
+                                    </Typography>
+                                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                    </Typography>
+                                </Box>
+                            </Modal>
+                        </div>
+
                     </MenuItem>
 
                     {/* User Avatar and Settings Menu */}

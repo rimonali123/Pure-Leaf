@@ -9,14 +9,16 @@ const ShopPage = () => {
     const axiosPublic = useAxiosPublic();
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedTags, setSelectedTags] = useState([]);
     const itemsPerPage = 12;
 
 
     const { data: allData, refetch } = useQuery({
-        queryKey: ['cardData', selectedCategory],
+        queryKey: ['cardData', selectedCategory,  setSelectedTags],
         queryFn: async () => {
             const res = await axiosPublic.get('/cardData', {
-                params: { category: selectedCategory || null } // Send category as query parameter
+                params: { category: selectedCategory || null,
+                    tags: selectedTags || null } // Send category as query parameter
             });
             return res.data;
         },
@@ -48,6 +50,19 @@ const ShopPage = () => {
         refetch(); // Refetch data based on the new category
     };
 
+
+
+    const handleTagChange = (tag) => {
+        // setSelectedTags(prevTags => {
+        //     const newTags = prevTags.includes(tag)
+        //         ? prevTags.filter(t => t !== tag) // Remove tag if already selected
+        //         : [...prevTags, tag]; // Add tag if not selected
+        //     return newTags;
+        // });
+        setSelectedTags(tag)
+        setCurrentPage(1); // Reset to the first page when tags change
+        refetch(); // Refetch data based on the new tags
+    };
 
     return (
         <div className="mt-20 mb-10">
@@ -138,7 +153,17 @@ const ShopPage = () => {
                     <div>
                         <h1 className="text-xl font-bold">Product tags</h1>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <button className="bg-slate-300 rounded-xl p-2 ">Avacado</button>
+                        <button onClick={() => handleTagChange('Avocado')} className={`bg-slate-300 rounded-xl p-2 ${selectedTags.includes('Avocado') ? 'bg-blue-500 text-white' : ''}`}>Avocado</button>
+                        <button onClick={() => handleTagChange('Banana')} className={`bg-slate-300 rounded-xl p-2 ${selectedTags.includes('Banana') ? 'bg-blue-500 text-white' : ''}`}>Banana</button>
+                        <button onClick={() => handleTagChange('Chicken')} className={`bg-slate-300 rounded-xl p-2 ${selectedTags.includes('Chicken') ? 'bg-blue-500 text-white' : ''}`}>Chicken</button>
+                        <button onClick={() => handleTagChange('Eggs')} className={`bg-slate-300 rounded-xl p-2 ${selectedTags.includes('Eggs') ? 'bg-blue-500 text-white' : ''}`}>Eggs</button>
+                        <button onClick={() => handleTagChange('Organic')} className={`bg-slate-300 rounded-xl p-2 ${selectedTags.includes('Organic') ? 'bg-blue-500 text-white' : ''}`}>Organic</button>
+                        <button onClick={() => handleTagChange('Onion')} className={`bg-slate-300 rounded-xl p-2 ${selectedTags.includes('Onion') ? 'bg-blue-500 text-white' : ''}`}>Onion</button>
+                        <button onClick={() => handleTagChange('Avocado')} className={`bg-slate-300 rounded-xl p-2 ${selectedTags.includes('Avocado') ? 'bg-blue-500 text-white' : ''}`}>Avocado</button>
+                            {/* <button className="bg-slate-300 rounded-xl p-2 ">Avacado</button> */}
+
+
+
                             <button className="bg-slate-300 rounded-xl p-2 ">Banana</button>
                             <button className="bg-slate-300 rounded-xl p-2 ">Chicken</button>
                             <button className="bg-slate-300 rounded-xl p-2 ">Eggs</button>
