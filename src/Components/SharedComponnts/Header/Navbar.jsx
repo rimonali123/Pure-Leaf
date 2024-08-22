@@ -19,6 +19,8 @@ import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import { NavLink } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Cartmodal from './CartModal/Cartmodal';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../Hoocks/UseAxiosSecure/useAxiosSecure';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -126,6 +128,18 @@ const Navbar = () => {
     const handleClosePageMenu = () => {
         setAnchorElPage(null);
     };
+const axiosSecure = useAxiosSecure();
+
+
+
+    const { data: cartData } = useQuery({
+        queryKey: ['cartItemData'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/cartItemData');
+            return res.data;
+        }
+    });
+    // console.log(cartData)
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
@@ -277,11 +291,11 @@ const Navbar = () => {
                         <div>
                             <IconButton onClick={handleOpen}
                                 size="large"
-                                aria-label="show 17 new notifications"
+                                aria-label="show cart item length notifications"
                                 color="inherit"
                                 className='flex items-center flex-row-reverse gap-2'
                             >
-                                <Badge badgeContent={17} color="error">
+                                <Badge badgeContent={cartData?.length || 0} color="error">
                                     <ShoppingCartIcon />
                                 </Badge>
                                 <p className='text-base'>Cart</p>
@@ -294,7 +308,8 @@ const Navbar = () => {
                                 aria-describedby="modal-modal-description"
                             >
                                 <Box sx={style}>
-                                    <Cartmodal></Cartmodal>
+                                    {/* <Cartmodal></Cartmodal> */}
+                                    {cartData?.map(cart => <Cartmodal key={cart._id} cart={cart}></Cartmodal>)}
                                     {/* <CardMedia
                                         component="img"
                                         className='h-60 w-10'
