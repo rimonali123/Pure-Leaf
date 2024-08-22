@@ -16,7 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { alpha, Badge, InputBase, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Cartmodal from './CartModal/Cartmodal';
 import { useQuery } from '@tanstack/react-query';
@@ -324,7 +324,9 @@ const Navbar = () => {
 
                                     <div className="flex gap-2 items-center justify-between mt-5">
                                         <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>Checkout</button>
+                                        <Link to='/viewCart'>
                                         <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>View cart</button>
+                                        </Link>
                                     </div>
                                 </Box>
                             </Modal>
