@@ -9,6 +9,7 @@ import { IoMdEye } from "react-icons/io";
 import PropTypes from 'prop-types';
 import { FaUserCheck } from "react-icons/fa";
 import useAxiosPublic from '../../Hoocks/UseAxiosPublic/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const CardHover = ({ data }) => {
     console.log(data)
@@ -17,8 +18,6 @@ const CardHover = ({ data }) => {
 
 
     const axiosPublic = useAxiosPublic();
-
-
 
 
 
@@ -36,11 +35,27 @@ const CardHover = ({ data }) => {
             .then(res => {
                 console.log(res.data)
                 console.log('cartItemData added to database .........')
+
+                if (res.data.insertedId) {
+                  
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your Item added to cart successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+
+                    });
+
+
+                }
+
             })
             .catch(error => {
                 console.error(error.message)
             })
     }
+
     return (
         <div>
             <div className="relative group">
@@ -100,7 +115,8 @@ const CardHover = ({ data }) => {
 
 };
 CardHover.propTypes = {
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
+    // refetch: PropTypes.func,
 }
 
 export default CardHover;

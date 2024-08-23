@@ -130,7 +130,7 @@ const Navbar = () => {
         }
     });
     // console.log(cartData)
-   
+
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
             <Container maxWidth="xl">
@@ -285,7 +285,7 @@ const Navbar = () => {
                                 color="inherit"
                                 className='flex items-center flex-row-reverse gap-2'
                             >
-                                <Badge badgeContent={cartData?.length || 0} color="error">
+                                <Badge badgeContent={cartData?.length || '0'} color="error">
                                     <ShoppingCartIcon />
                                 </Badge>
                                 <p className='text-base'>Cart</p>
@@ -312,25 +312,30 @@ const Navbar = () => {
                                     overflow: "auto"
 
                                 }}>
-                                    <div className='flex flex-col'>
-                                        {cartData?.map(cart => <Cartmodal key={cart._id} cart={cart} refetch={refetch}></Cartmodal>)}
+                                    {cartData?.length ? <div>
+                                        <div className='flex flex-col'>
+                                            {cartData?.map(cart => <Cartmodal key={cart._id} cart={cart} refetch={refetch}></Cartmodal>)}
+                                        </div>
+
+
+
+                                        <Typography className='flex items-center justify-between text-2xl font-bold'>
+                                            Total price : <span className='text-2xl text-red-500'> $00</span>
+                                        </Typography>
+
+                                        <div className="flex gap-2 items-center justify-between mt-5">
+                                            <Link to='/checkOutPage'>
+                                                <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>Checkout</button>
+                                            </Link>
+
+                                            <Link to='/viewCart'>
+                                                <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>View cart</button>
+                                            </Link>
+                                        </div>
                                     </div>
-
-
-
-                                    <Typography className='flex items-center justify-between text-2xl font-bold'>
-                                        Total price : <span className='text-2xl text-red-500'> $00</span>
-                                    </Typography>
-
-                                    <div className="flex gap-2 items-center justify-between mt-5">
-                                        <Link to='/checkOutPage'>
-                                            <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>Checkout</button>
-                                        </Link>
-
-                                        <Link to='/viewCart'>
-                                            <button className='text-black bg-white border hover:text-white text-xl  p-2 rounded-xl hover:bg-green-500'>View cart</button>
-                                        </Link>
-                                    </div>
+                                        :
+                                        'There is no item added to cart, please add first.'
+                                    }
                                 </Box>
                             </Modal>
                         </div>

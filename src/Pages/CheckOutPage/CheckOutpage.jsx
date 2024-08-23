@@ -1,23 +1,37 @@
+import { useQuery } from "@tanstack/react-query";
 import AddressForm from "../AccountPage/DashboardAddressForm/AddressForm";
+import useAxiosSecure from "../../Hoocks/UseAxiosSecure/useAxiosSecure";
+import ProductSection from "./ProductSection";
+
 
 
 const CheckOutpage = () => {
+    const axiosSecure = useAxiosSecure();
+
+
+    const { data: cartItem } = useQuery({
+        queryKey: ['cartItemData'],
+        queryFn: async () => {
+            const result = await axiosSecure.get('/cartItemData')
+            return result.result
+        }
+    })
+    console.log(cartItem)
+
     return (
         <div className="mt-20">
-            <div className="flex gap-10">
+            <div className="flex gap-10 flex-col lg:flex-row">
                 <div className="w-full">
                     <AddressForm></AddressForm>
                 </div>
                 <div className="w-full mt-5">
                     <h1 className="text-2xl font-semibold mb-5 ">Your Order</h1>
                     <div className="  bg-slate-100 w-full p-4 ">
-                        <div>
-                            <p className="text-2xl font-bold">Product</p>
-                           <div className="flex items-center justify-between">
-                           <p>product name</p>
-                           <img src="https://i.ibb.co/Q8pqvsg/tablet.jpg" className="w-44 " alt="" />
-                           </div>
+                        <p className="text-2xl font-bold">Product</p>
+                        <div className="flex flex-col gap-5">
+                            {cartItem?.map(cart => <ProductSection key={cart._id} cart={cart} ></ProductSection>)}
                         </div>
+
 
                         <h3 className="text-xl font-bold">Cart Totals</h3>
                         <div className="flex justify-between p-4 px-8">
@@ -40,11 +54,11 @@ const CheckOutpage = () => {
                     <div>
                         <h1 className="text-2xl font-bold p-8">Payment method</h1>
                         <div className="flex gap-2 items-center bg-slate-100 p-4 hover:bg-slate-200">
-                            <input className="rounded-full " type="checkbox" name="Cash on delivery"  id="" />
+                            <input className="rounded-full " type="checkbox" name="Cash on delivery" id="" />
                             <p className="text-xl font-semibold">Check Payments</p>
                         </div>
                         <div className="flex gap-2 items-center bg-slate-100 p-4 hover:bg-slate-200 mt-4">
-                            <input className="rounded-full " type="checkbox" name="Cash on delivery"  id="" />
+                            <input className="rounded-full " type="checkbox" name="Cash on delivery" id="" />
                             <p className="text-xl font-semibold">Cash on Delivery</p>
                         </div>
                     </div>

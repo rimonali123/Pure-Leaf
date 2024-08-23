@@ -26,7 +26,7 @@ const ViewCart = () => {
                         <Link to='/shopPage'><button className='text-green-500 text-xl'>Continue Shopping</button></Link>
                     </div>
                 </div>
-                <div className="  bg-slate-100 w-1/2 p-4 h-72">
+                <div className="  bg-slate-100 lg:w-1/2 p-4 h-72">
                     <h3 className="text-xl font-bold">Cart Totals</h3>
                     <div className="flex justify-between p-4 px-8">
                         <p>Sub total</p>
