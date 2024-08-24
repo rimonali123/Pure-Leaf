@@ -7,7 +7,7 @@ const WishListPage = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    const { data: wishlistData } = useQuery({
+    const { data: wishlistData , refetch} = useQuery({
         queryKey: 'wishListData',
         queryFn: async () => {
             const res = await axiosSecure.get('/wishListData');
@@ -20,7 +20,7 @@ const WishListPage = () => {
         <div>
             <h1 className="text-2xl font-bold">WishList</h1>
             {wishlistData?.length ? <>
-                {wishlistData?.map(data => <WishListCart key={data._id} data={data}></WishListCart>)}
+                {wishlistData?.map(data => <WishListCart key={data._id} data={data} refetch={refetch}></WishListCart>)}
             </> : 'No products were added to the wishlist'}
         </div>
     );
