@@ -42,6 +42,10 @@ const AccountPage = () => {
                             <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><MdManageAccounts  /></span>Manage User</button>
                         </NavLink>
 
+                        <NavLink to="/accountPage/manageWishList" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><MdManageAccounts  /></span>Manage Wish List</button>
+                        </NavLink>
+
 
                         <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><CiLogout /></span>Log Out</button>
 

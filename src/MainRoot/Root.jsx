@@ -23,6 +23,7 @@ import ManageUser from "../Pages/AccountDashboard/ManageUser/ManageUser";
 import ViewCart from "../Pages/ViewCart/ViewCart";
 import CheckOutpage from "../Pages/CheckOutPage/CheckOutpage";
 import QuickViewPage from "../Pages/QuickViewPage/QuickViewPage";
+import WishListPage from "../Pages/WishListPage/WishListPage";
 
   export const router = createBrowserRouter([
     {
@@ -124,6 +125,10 @@ import QuickViewPage from "../Pages/QuickViewPage/QuickViewPage";
         {
           path: "manageUser",
           element: <ManageUser></ManageUser>
+        },
+        {
+          path: "manageWishList",
+          element: <WishListPage></WishListPage>
         },
 
       ]

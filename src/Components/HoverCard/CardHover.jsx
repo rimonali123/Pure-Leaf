@@ -8,17 +8,19 @@ import { GrFavorite } from "react-icons/gr";
 import { IoMdEye } from "react-icons/io";
 import PropTypes from 'prop-types';
 import { FaUserCheck } from "react-icons/fa";
-import useAxiosPublic from '../../Hoocks/UseAxiosPublic/useAxiosPublic';
+// import useAxiosPublic from '../../Hoocks/UseAxiosPublic/useAxiosPublic';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../Hoocks/UseAxiosSecure/useAxiosSecure';
 
 const CardHover = ({ data }) => {
     // console.log(data)
-    const { name, image, price, weight, rating, totalRatings } = data;
+    const { name, image, price, weight, rating, totalRatings,availability } = data;
 
 
 
-    const axiosPublic = useAxiosPublic();
+    // const axiosPublic = useAxiosPublic();
+    const axiosSecure= useAxiosSecure();
 
 
 
@@ -28,11 +30,12 @@ const CardHover = ({ data }) => {
             productName: name,
             productImage: image,
             productPrice: price,
+           
         }
         console.log('button clicked')
         console.log(cartItem)
 
-        axiosPublic.post('/cartItemData', cartItem)
+        axiosSecure.post('/cartItemData', cartItem)
             .then(res => {
                 console.log(res.data)
                 console.log('cartItemData added to database .........')
@@ -43,6 +46,42 @@ const CardHover = ({ data }) => {
                         position: "top-end",
                         icon: "success",
                         title: "Your Item added to cart successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+
+                    });
+
+
+                }
+
+            })
+            .catch(error => {
+                console.error(error.message)
+            })
+    }
+
+
+    const handleAddWishlistData = () => {
+        const cartItem = {
+            productName: name,
+            productImage: image,
+            productPrice: price,
+            productStatus: availability,
+        }
+        console.log('button clicked')
+        console.log(cartItem)
+
+        axiosSecure.post('/wishListData', cartItem)
+            .then(res => {
+                console.log(res.data)
+                console.log('wishListData added to database .........')
+
+                if (res.data.insertedId) {
+                  
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your Item added to wish list successfully",
                         showConfirmButton: false,
                         timer: 1500
 
@@ -71,7 +110,7 @@ const CardHover = ({ data }) => {
                             />
                             <div className='hidden group-hover:block absolute top-[375px] md:top-[270px] lg:top-[170px] left-44 md:left-32 lg:left-10 text-black p-4'>
                                 <div className='flex gap-3 justify-center '>
-                                    <button className='flex flex-col items-center bg-white hover:text-green-600 hover:font-bold'><span className='text-xl'><GrFavorite /></span>Wishlisht</button>
+                                    <button onClick={handleAddWishlistData} className='flex flex-col items-center bg-white hover:text-green-600 hover:font-bold'><span className='text-xl'><GrFavorite /></span>Wishlisht</button>
                                    <Link to={`/quickViewPage/${data._id}`}>
                                    <button  className='flex flex-col items-center bg-white hover:text-green-600 hover:font-bold'><span className='text-xl'><IoMdEye /></span>Quickview</button>
                                    </Link>
