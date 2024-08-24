@@ -22,6 +22,7 @@ import ManageProduct from "../Pages/AccountDashboard/ManageProduct/ManageProduct
 import ManageUser from "../Pages/AccountDashboard/ManageUser/ManageUser";
 import ViewCart from "../Pages/ViewCart/ViewCart";
 import CheckOutpage from "../Pages/CheckOutPage/CheckOutpage";
+import QuickViewPage from "../Pages/QuickViewPage/QuickViewPage";
 
   export const router = createBrowserRouter([
     {
@@ -70,6 +71,11 @@ import CheckOutpage from "../Pages/CheckOutPage/CheckOutpage";
         {
           path:"/checkOutPage",
           element:<CheckOutpage></CheckOutpage>
+        },
+        {
+          path:"/quickViewPage/:id",
+          element:<QuickViewPage></QuickViewPage>,
+          loader: ({ params }) => fetch(`http://localhost:5000/cardData/${params.id}`),
         },
        
       ]

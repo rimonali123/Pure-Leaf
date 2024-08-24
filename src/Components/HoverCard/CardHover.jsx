@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { FaUserCheck } from "react-icons/fa";
 import useAxiosPublic from '../../Hoocks/UseAxiosPublic/useAxiosPublic';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const CardHover = ({ data }) => {
     // console.log(data)
@@ -71,7 +72,9 @@ const CardHover = ({ data }) => {
                             <div className='hidden group-hover:block absolute top-[375px] md:top-[270px] lg:top-[170px] left-44 md:left-32 lg:left-10 text-black p-4'>
                                 <div className='flex gap-3 justify-center '>
                                     <button className='flex flex-col items-center bg-white hover:text-green-600 hover:font-bold'><span className='text-xl'><GrFavorite /></span>Wishlisht</button>
-                                    <button className='flex flex-col items-center bg-white hover:text-green-600 hover:font-bold'><span className='text-xl'><IoMdEye /></span>Quickview</button>
+                                   <Link to={`/quickViewPage/${data._id}`}>
+                                   <button  className='flex flex-col items-center bg-white hover:text-green-600 hover:font-bold'><span className='text-xl'><IoMdEye /></span>Quickview</button>
+                                   </Link>
 
                                 </div>
                             </div>
