@@ -114,7 +114,7 @@ const Navbar = () => {
     }
 
 
-   
+
 
     const settings = [
 
@@ -166,7 +166,7 @@ const Navbar = () => {
     // console.log(cartData)
 
 
-  
+
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
             <Container maxWidth="xl">
@@ -380,9 +380,9 @@ const Navbar = () => {
 
                     {/* User Avatar and Settings Menu */}
                     {user ? <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
+                        <Tooltip title={user?.displayName}>
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="User Avatar" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="User Avatar" src={user?.photoURL} />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -407,21 +407,12 @@ const Navbar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
-                    </Box> : <Link className='ml-4' to='/loginPage' key='3'><Button variant="contained" color="success" className='flex gap-2'>
+                    </Box> : <Link className='ml-4 border rounded-xl' to='/loginPage' key='3'><Button variant="contained" color="success" className='flex gap-2 '>
                         Log In<BiLogInCircle />
                     </Button>
                     </Link>}
 
-                    {/* {user ?
-                        <Link onClick={handlelogout} className='ml-4 ' to='/loginPage' key='3'><Button variant="contained" color="success" className='flex gap-2'>
-                            Log Out < IoMdLogOut />
-                        </Button>
-                        </Link> :
-                        <Link className='ml-4' to='/loginPage' key='3'><Button variant="contained" color="success" className='flex gap-2'>
-                            Log In<BiLogInCircle />
-                        </Button>
-                        </Link>
-                    } */}
+
                 </Toolbar>
             </Container>
         </AppBar>

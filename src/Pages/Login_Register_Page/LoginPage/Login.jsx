@@ -81,10 +81,10 @@ const navigate = useNavigate();
                             <p>Read Our Terms & Conditions.</p>
                         </div>
                         {errors.checkbox && <span className="text-red-600">This field is required</span>}
-                        {/* <button className="text-xl font-bold border p-2 rounded-xl text-white bg-green-600 mt-5 w-full hover:text-2xl">
+                        <button className="text-xl font-bold border p-2 rounded-xl text-white bg-green-600 mt-5 w-full hover:text-2xl">
                             Login Now
-                        </button> */}
-                        <input  className="text-xl font-bold border p-2 rounded-xl text-white bg-green-600 mt-5 w-full hover:text-2xl" type="submit" value="Login Now" />
+                        </button>
+                        {/* <input  className="text-xl font-bold border p-2 rounded-xl text-white bg-green-600  mt-5 w-full hover:text-2xl" type="submit" value="Login Now" /> */}
                     </form>
                     <div className="mt-5 b">
                         <div>
