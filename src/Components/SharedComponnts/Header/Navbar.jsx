@@ -11,16 +11,20 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { alpha, Badge, InputBase, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Cartmodal from './CartModal/Cartmodal';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../Hoocks/UseAxiosSecure/useAxiosSecure';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
+// import { IoMdLogOut } from 'react-icons/io';
+import { BiLogInCircle } from 'react-icons/bi';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -76,11 +80,6 @@ const pages = [
 
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const settings = [
-
-    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/accountPage' key={10}>Account</NavLink>,
-    <NavLink className={({ isActive }) => isActive ? '' : ''} to='/loginPage' key={11}>Login</NavLink>,
-];
 
 const pagesMenus = [
     <NavLink className={({ isActive }) => isActive ? '' : ''} to='/aboutUs' key={5}>About Us</NavLink>,
@@ -90,6 +89,41 @@ const pagesMenus = [
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+    console.log(user)
+    const handlelogout = () => {
+        logOut()
+            .then(() => {
+                console.log('LogOut Successfully')
+                Swal.fire({
+                    position: "center,top-end",
+                    icon: "error",
+                    title: "LogOut Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                navigate('/loginPage')
+            })
+            .catch(error => {
+                console.error(error.message)
+            })
+
+    }
+
+
+   
+
+    const settings = [
+
+        < NavLink className={({ isActive }) => isActive ? '' : ''} to='/accountPage' key={10} > Account</NavLink >,
+        <NavLink onClick={handlelogout} className={({ isActive }) => isActive ? '' : ''} key={11}>Log Out</NavLink>
+
+    ];
+
+
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [anchorElPage, setAnchorElPage] = useState(null);
@@ -131,6 +165,8 @@ const Navbar = () => {
     });
     // console.log(cartData)
 
+
+  
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
             <Container maxWidth="xl">
@@ -343,7 +379,7 @@ const Navbar = () => {
                     </MenuItem>
 
                     {/* User Avatar and Settings Menu */}
-                    <Box sx={{ flexGrow: 0 }}>
+                    {user ? <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="User Avatar" src="/static/images/avatar/2.jpg" />
@@ -371,7 +407,21 @@ const Navbar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
-                    </Box>
+                    </Box> : <Link className='ml-4' to='/loginPage' key='3'><Button variant="contained" color="success" className='flex gap-2'>
+                        Log In<BiLogInCircle />
+                    </Button>
+                    </Link>}
+
+                    {/* {user ?
+                        <Link onClick={handlelogout} className='ml-4 ' to='/loginPage' key='3'><Button variant="contained" color="success" className='flex gap-2'>
+                            Log Out < IoMdLogOut />
+                        </Button>
+                        </Link> :
+                        <Link className='ml-4' to='/loginPage' key='3'><Button variant="contained" color="success" className='flex gap-2'>
+                            Log In<BiLogInCircle />
+                        </Button>
+                        </Link>
+                    } */}
                 </Toolbar>
             </Container>
         </AppBar>

@@ -12,7 +12,7 @@ import useAxiosPublic from '../../Hoocks/UseAxiosPublic/useAxiosPublic';
 import Swal from 'sweetalert2';
 
 const CardHover = ({ data }) => {
-    console.log(data)
+    // console.log(data)
     const { name, image, price, weight, rating, totalRatings } = data;
 
 

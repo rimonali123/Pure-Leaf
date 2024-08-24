@@ -1,7 +1,7 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../../Firebase/firebase.console";
-import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth/web-extension";
+// import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth/web-extension";
 import PropTypes from 'prop-types'
 import axios from "axios";
 
@@ -26,16 +26,16 @@ const AuthProvider = ({children}) => {
     }
 
     
-    const googleLogin = () => {
-        const provider = new GoogleAuthProvider();
-        return signInWithPopup(auth, provider); 
-    };
+    // const googleLogin = () => {
+    //     const provider = new GoogleAuthProvider();
+    //     return signInWithPopup(auth, provider); 
+    // };
 
     
-    const githubLogin =()=>{
-        const githubProvider = new GithubAuthProvider();
-        return signInWithPopup(auth, githubProvider);
-    }
+    // const githubLogin =()=>{
+    //     const githubProvider = new GithubAuthProvider();
+    //     return signInWithPopup(auth, githubProvider);
+    // }
 
     const logOut = ()=>{
         setLoading(true)
@@ -86,8 +86,8 @@ const AuthProvider = ({children}) => {
     const allValues = {
         createUser,
         signInUser,
-        googleLogin,
-        githubLogin,
+        // googleLogin,
+        // githubLogin,
         logOut,
         user,
         loggedInUser, 
