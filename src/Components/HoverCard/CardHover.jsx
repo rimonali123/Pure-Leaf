@@ -12,9 +12,12 @@ import { FaUserCheck } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../Hoocks/UseAxiosSecure/useAxiosSecure';
+import { useContext } from 'react';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
-const CardHover = ({ data }) => {
-    // console.log(data)
+const CardHover = ({ data ,refetch}) => {
+    const {user} = useContext(AuthContext)
+    console.log(user?.email)
     const { name, image, price, weight, rating, totalRatings,availability } = data;
 
 
@@ -30,6 +33,7 @@ const CardHover = ({ data }) => {
             productName: name,
             productImage: image,
             productPrice: price,
+            email :  user?.email
            
         }
         console.log('button clicked')
@@ -39,9 +43,9 @@ const CardHover = ({ data }) => {
             .then(res => {
                 console.log(res.data)
                 console.log('cartItemData added to database .........')
-
+             
                 if (res.data.insertedId) {
-                  
+                   
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -53,6 +57,7 @@ const CardHover = ({ data }) => {
 
 
                 }
+                refetch()
 
             })
             .catch(error => {
@@ -67,6 +72,7 @@ const CardHover = ({ data }) => {
             productImage: image,
             productPrice: price,
             productStatus: availability,
+            email :  user?.email
         }
         console.log('button clicked')
         console.log(cartItem)
@@ -158,7 +164,7 @@ const CardHover = ({ data }) => {
 };
 CardHover.propTypes = {
     data: PropTypes.object.isRequired,
-    // refetch: PropTypes.func,
+    refetch: PropTypes.func,
 }
 
 export default CardHover;

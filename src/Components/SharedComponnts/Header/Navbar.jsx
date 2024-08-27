@@ -159,11 +159,11 @@ const Navbar = () => {
     const { data: cartData, refetch } = useQuery({
         queryKey: ['cartItemData'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/cartItemData');
+            const res = await axiosSecure.get(`/cartItemData/${user?.email}`);
             return res.data;
         }
     });
-    // console.log(cartData)
+    console.log(cartData)
 
 
 

@@ -38,7 +38,7 @@ const HoverCard = () => {
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10'>
-                {currentData?.map(data => <CardHover key={data._id} data={data} refetch={refetch()}/>)}
+                {currentData?.map(data => <CardHover key={data._id} data={data} refetch={refetch}/>)}
             </div>
             
             {/* Pagination Controls */}
