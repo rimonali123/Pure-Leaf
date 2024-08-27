@@ -1,7 +1,28 @@
+import { useForm } from "react-hook-form";
+import GoogleMap from "../../GoogleMap/GoogleMap";
+import Swal from "sweetalert2";
 
 
 
 const ContactUsPage = () => {
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const onSubmit  = async (data) => {
+        console.log(data)
+        console.log('button clicked')
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your message has been sent",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          reset()
+          
+    }
+
+
+    
     return (
         <div className="mt-28">
             <h1 className="text-4xl font-medium">Contact Us</h1>
@@ -39,27 +60,42 @@ const ContactUsPage = () => {
                 </div>
             </div>
 
-            <div className="mt-10 mb-10 flex flex-col lg:flex-row  gap-10 ">
-                <div className="bg-slate-100 p-5 ">
+          
+                <div className="bg-slate-100 p-5  w-full">
                     <h1 className="text-xl font-bold">Have any question?</h1>
                     <p>Your email address will not be published. Required fileds are marked*</p>
-                    <form className="mt-5 flex flex-col gap-10">
-                        <input className="w-full p-3 rounded-lg  " type="text" required placeholder="Name*"  />
-                        <input className="w-full p-3 rounded-lg  " type="email" required placeholder="Email*" />
-                        <input className="w-full p-3 rounded-lg  " type="text" placeholder="Subject" />
-                        <textarea className="w-full p-3 rounded-lg  " name="" rows={5} id="" required placeholder="Message*" />
+
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-5 flex flex-col gap-10">
+
+                        <input className="w-full p-3 rounded-lg  " type="text" {...register("name", { required: true })} placeholder="Name*" />
+                         {errors.name && <span>This field is required</span>}
+
+                       
+
+                        <input className="w-full p-3 rounded-lg  " type="email" {...register("email", { required: true })} placeholder="Email*" />
+                         {errors.email && <span>This field is required</span>}
+
+                       
+
+                        <input className="w-full p-3 rounded-lg  " type="text" {...register("subject", { required: false })} placeholder="Subject" />
+                         {errors.subject && <span>This field is required</span>}
+
+                       
+
+                       <textarea className="w-full p-3 rounded-lg  " {...register("message")} name="message" placeholder="type your message" rows={5} id=""></textarea>
+
                         <div className="w-full text-end">
-                            <input className="bg-green-500 p-2 w-44 text-white text-xl rounded-lg " type="submit" value="Submit question" />
+                            <input className="bg-green-500 p-2 w-44 text-white text-xl rounded-lg " type="submit" value="Submit Message" />
                         </div>
                     </form>
                 </div>
 
-                <div>
-               
+                
+
+            
+            <div>
+                    <GoogleMap></GoogleMap>
                 </div>
-
-
-            </div>
         </div>
     );
 };
