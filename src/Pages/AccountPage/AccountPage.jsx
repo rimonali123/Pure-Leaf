@@ -14,40 +14,40 @@ const AccountPage = () => {
                 <div className="flex flex-col lg:flex-row gap-10 border border-yellow-500 h-full">
                     <div className="border border-red-500 lg:w-1/2 p-4 flex  flex-col">
                         <NavLink to="/accountPage/dashboardPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><SlSpeedometer /></span>Dashboard</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><SlSpeedometer /></span>Dashboard</button>
                         </NavLink>
 
                         <NavLink to="/accountPage/orderPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><LuShoppingCart /></span>Order</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><LuShoppingCart /></span>Order</button>
                         </NavLink>
 
                         <NavLink to="/accountPage/addressPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><CiLocationOn /></span>Address</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><CiLocationOn /></span>Address</button>
                         </NavLink>
 
                         <NavLink to="/accountPage/accountDetailsPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><CiUser /></span>Account Details</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><CiUser /></span>Account Details</button>
                         </NavLink>
 
 
                         <NavLink to="/accountPage/addItemPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><MdPlaylistAdd /></span>Add Product</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><MdPlaylistAdd /></span>Add Product</button>
                         </NavLink>
 
                         <NavLink to="/accountPage/manageProdct" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><AiFillDatabase /></span>Manage Product</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><AiFillDatabase /></span>Manage Product</button>
                         </NavLink>
 
                         <NavLink to="/accountPage/manageUser" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><MdManageAccounts  /></span>Manage User</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><MdManageAccounts  /></span>Manage User</button>
                         </NavLink>
 
                         <NavLink to="/accountPage/manageWishList" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><MdManageAccounts  /></span>Manage Wish List</button>
+                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><MdManageAccounts  /></span>Manage Wish List</button>
                         </NavLink>
 
 
-                        <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-500 hover:text-white"><span><CiLogout /></span>Log Out</button>
+                        <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><CiLogout /></span>Log Out</button>
 
                     </div>
 
