@@ -1,6 +1,6 @@
 import { SlSpeedometer } from "react-icons/sl";
 import { LuShoppingCart } from "react-icons/lu";
-import { CiLocationOn, CiUser, CiLogout } from "react-icons/ci";
+import {  CiUser, CiLogout } from "react-icons/ci";
 import { AiFillDatabase } from "react-icons/ai";
 import { MdPlaylistAdd , MdManageAccounts } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
@@ -19,10 +19,6 @@ const AccountPage = () => {
 
                         <NavLink to="/accountPage/orderPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
                             <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><LuShoppingCart /></span>Order</button>
-                        </NavLink>
-
-                        <NavLink to="/accountPage/addressPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>
-                            <button className="text-start border-2 w-full border-black font-medium text-xl py-4 px-4 flex items-center gap-2 hover:bg-green-600 hover:text-white"><span><CiLocationOn /></span>Address</button>
                         </NavLink>
 
                         <NavLink to="/accountPage/accountDetailsPage" className={({ isActive }) => isActive ? 'bg-green-500 text-white' : ''}>

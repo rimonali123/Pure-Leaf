@@ -13,10 +13,8 @@ import AccountPage from "../Pages/AccountPage/AccountPage";
 import WellcomePage from "../Pages/AccountPage/DashboardWellcomePage/WellcomePage";
 // import Dashboard from "../Pages/AccountDashboard/DashboardPage/Dashboard";
 import OrderPage from "../Pages/AccountDashboard/DashboardOrderPage/OrderPage";
-import DashboardAddressPage from "../Pages/AccountDashboard/DashboardAddressPage/DashboardAddressPage";
 import AccountDetailsPage from "../Pages/AccountDashboard/DashboardAccountDetailsPage/AccountDetailsPage";
 import AddressForm from "../Pages/AccountPage/DashboardAddressForm/AddressForm";
-import ShippingAddressForm from "../Pages/AccountPage/DashboardAddressForm/ShippingAddressForm";
 import AddItemForm from "../Pages/AccountDashboard/AddItemForm/AddItemForm";
 import ManageProduct from "../Pages/AccountDashboard/ManageProduct/ManageProduct";
 import ManageUser from "../Pages/AccountDashboard/ManageUser/ManageUser";
@@ -98,22 +96,16 @@ import WishListPage from "../Pages/WishListPage/WishListPage";
           path: "orderPage",
           element: <OrderPage></OrderPage>
         },
-        {
-          path: "addressPage",
-          element: <DashboardAddressPage></DashboardAddressPage>
-        },
+       
         {
           path: "accountDetailsPage",
           element: <AccountDetailsPage></AccountDetailsPage>
         },
         {
-          path: "addressPage/billingAddressEdit",
+          path: "accountDetailsPage/billingAddressEdit",
           element: <AddressForm></AddressForm>
         },
-        {
-          path: "addressPage/shippingAddressEdit",
-          element: <ShippingAddressForm></ShippingAddressForm>
-        },
+      
         {
           path: "addItemPage",
           element: <AddItemForm></AddItemForm>
