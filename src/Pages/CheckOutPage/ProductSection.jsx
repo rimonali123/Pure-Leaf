@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const ProductSection = ({ cart }) => {
-    console.log(cart)
+    // console.log(cart)
     return (
         <div>
             <div>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const OrderPage = () => {
@@ -18,7 +19,9 @@ const OrderPage = () => {
                         <h4 className="text-xl font-bold">Delivery Address</h4>
                         <p>83/87, sukrabad, Dhaka</p>
                         <div className="w-full text-end">
-                            <button className="font-bold px-2 border hover:border-2 hover:border-red-300 hover:bg-green-500 hover:text-white">Edit</button>
+                            <Link to='/accountPage/accountDetailsPage/billingAddressEdit'>
+                                <button className="font-bold px-2 border hover:border-2 hover:border-red-300 hover:bg-green-500 hover:text-white">Edit</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -47,7 +50,7 @@ const OrderPage = () => {
                             <p>Sub total</p>
                             <p>$200</p>
                         </div>
-                        <hr  className="mt-1 mb-1"/>
+                        <hr className="mt-1 mb-1" />
                         <div className="flex justify-between items-center">
                             <p className="font-bold">Total to Pay</p>
                             <p>$200</p>
