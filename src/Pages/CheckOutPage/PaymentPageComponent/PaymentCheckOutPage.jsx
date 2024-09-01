@@ -49,17 +49,17 @@ const PaymentCheckOutPage = ({ totalPricePlusOne, totalPrice }) => {
                 return res.data;
             }
         });
-        console.log(cartData?.productName)
+        console.log(cartData)
 
-        if (Array.isArray(cartData)) {
-            cartData.forEach(item => {
-                // console.log(item.productName);
-                return item
-                // console.log(item.description);
-            });
-        } else {
-            console.log('cartData is not an array');
-        }
+        // if (Array.isArray(cartData)) {
+        //     cartData.forEach(item => {
+        //         console.log(item.productName);
+                
+        //         // console.log(item.description);
+        //     });
+        // } else {
+        //     console.log('cartData is not an array');
+        // }
 
 
         // console.log(item.productName);
@@ -129,9 +129,11 @@ const PaymentCheckOutPage = ({ totalPricePlusOne, totalPrice }) => {
                     country: item?.country,
                     streetAddress: item?.streetAddress,
                     town: item?.town,
-                    productName: item?.productName,
-                    productImage: item?.productImage,
-                    description: item?.description,
+                    products: cartData.map(({ productName, productImage, description }) => ({
+                        productName,
+                        productImage,
+                        description
+                    })),
                     status: 'success',
                     transictionId: paymentIntent?.id,
                 }

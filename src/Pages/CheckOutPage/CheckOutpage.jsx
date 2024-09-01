@@ -14,6 +14,7 @@ import Modal from '@mui/material/Modal';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentCheckOutPage from "./PaymentPageComponent/PaymentCheckOutPage";
+import Swal from "sweetalert2";
 
 
 
@@ -74,8 +75,12 @@ const CheckOutpage = () => {
     useEffect(() => {
         if (Array.isArray(cartItem)) {
             const calculatedTotalPrice = cartItem.reduce((total, item) => total + item.productPrice, 0);
-            setTotalPrice(calculatedTotalPrice);
-            setTotalPricePlusOne(calculatedTotalPrice + 1);
+
+            const totalPrice = parseFloat(calculatedTotalPrice.toFixed(2));
+            const totalPricePlusOne = parseFloat((calculatedTotalPrice + 1).toFixed(2));
+
+            setTotalPrice(totalPrice);
+            setTotalPricePlusOne(totalPricePlusOne);
         }
     }, [cartItem]);
 
@@ -97,6 +102,30 @@ const CheckOutpage = () => {
     })
     // console.log(userData)
 
+const [item, setItem] = useState()
+
+    useEffect(() => {
+        axiosSecure.get(`/userInfo/${user?.email}`)
+
+
+            .then(data => {
+                setItem(data.data)
+            })
+    }, [axiosSecure, user?.email])
+
+    console.log(item?.name)
+
+    const { data: cartData } = useQuery({
+        queryKey: ['cartItemData'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/cartItemData');
+            return res.data;
+        }
+    });
+    console.log(cartData)
+
+
+
     const onSubmit = async (data) => {
         // console.log('button clicked')
         // console.log(data)
@@ -107,6 +136,38 @@ const CheckOutpage = () => {
             handleOpen();
         } else if (paymentMethod === "cashOnDelivery") {
             await processOrder(data);
+
+            const orderDetails = {
+                userName: item?.name,
+                email: user?.email,
+                phoneNumber: item?.phoneNumber,
+                totalPrice: totalPricePlusOne,
+                subtotal: totalPrice,
+                country: item?.country,
+                streetAddress: item?.streetAddress,
+                town: item?.town,
+                products: cartData.map(({ productName, productImage, description }) => ({
+                    productName,
+                    productImage,
+                    description
+                })),
+                status: 'success',
+               
+            }
+            const res = await axiosSecure.post('/orderInfo', orderDetails)
+            console.log(res.data)
+            console.log('order info save')
+            if (res.data?.insertedId) {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your order receive is Succesfully",
+                  
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+            console.log(orderDetails)
         }
 
     }

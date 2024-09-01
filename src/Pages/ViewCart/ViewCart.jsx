@@ -22,8 +22,12 @@ const ViewCart = () => {
     useEffect(() => {
         if (Array.isArray(cartData)) {
             const calculatedTotalPrice = cartData.reduce((total, item) => total + item.productPrice, 0);
-            setTotalPrice(calculatedTotalPrice);
-            setTotalPricePlusOne(calculatedTotalPrice + 1);
+
+            const totalPrice = parseFloat(calculatedTotalPrice.toFixed(2));
+            const totalPricePlusOne = parseFloat((calculatedTotalPrice + 1).toFixed(2));
+
+            setTotalPrice(totalPrice);
+            setTotalPricePlusOne(totalPricePlusOne);
         }
     }, [cartData]);
 

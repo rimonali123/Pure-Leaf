@@ -176,7 +176,8 @@ const Navbar = () => {
     // }
     useEffect(() => {
         if (Array.isArray(cartData)) {
-            const calculatedTotalPrice = cartData.reduce((total, item) => total + item.productPrice, 0);
+            const calculatedTotalPrices = cartData.reduce((total, item) => total + item.productPrice, 0);
+            const calculatedTotalPrice = parseFloat(calculatedTotalPrices.toFixed(2));
             setTotalPrice(calculatedTotalPrice);
         }
     }, [cartData]);
