@@ -21,7 +21,6 @@ const ProductSection = ({ cart }) => {
 };
 ProductSection.propTypes = {
     cart: PropTypes.object.isRequired,
-    refetch: PropTypes.object.isRequired,
 }
 
 export default ProductSection;

@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { alpha, Badge, InputBase, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -89,6 +89,7 @@ const pagesMenus = [
 
 
 const Navbar = () => {
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -164,8 +165,24 @@ const Navbar = () => {
         }
     });
     console.log(cartData)
+    
+    // if (Array.isArray(cartData)) {
+    //     const totalPrice = cartData.reduce((total, item) => {
+    //         return total + item.productPrice;
+    //     }, 0);
+    
+    //     console.log('Total Price:', totalPrice);
+       
+    // }
+    useEffect(() => {
+        if (Array.isArray(cartData)) {
+            const calculatedTotalPrice = cartData.reduce((total, item) => total + item.productPrice, 0);
+            setTotalPrice(calculatedTotalPrice);
+        }
+    }, [cartData]);
 
 
+    console.log(totalPrice)
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: 'green' }}>
@@ -356,7 +373,7 @@ const Navbar = () => {
 
 
                                         <Typography className='flex items-center justify-between text-2xl font-bold'>
-                                            Total price : <span className='text-2xl text-red-500'> $00</span>
+                                            Total price : <span className='text-2xl text-red-500'> ${totalPrice}</span>
                                         </Typography>
 
                                         <div className="flex gap-2 items-center justify-between mt-5">

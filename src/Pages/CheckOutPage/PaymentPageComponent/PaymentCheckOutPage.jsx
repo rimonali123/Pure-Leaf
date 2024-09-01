@@ -4,29 +4,32 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import useAxiosSecure from "../../../Hoocks/UseAxiosSecure/useAxiosSecure";
 import { Button } from "@mui/material";
+import PropTypes from 'prop-types';
+import { useQuery } from "@tanstack/react-query";
 
 
-const PaymentCheckOutPage = () => {
+const PaymentCheckOutPage = ({ totalPricePlusOne, totalPrice }) => {
     const { user } = useContext(AuthContext)
     const [clientSecret, setClientSecret] = useState();
     const stripe = useStripe();
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
-    // const [item, seetItem] = useState([]);
+    console.log(totalPricePlusOne)
+    const [item, seetItem] = useState([]);
 
-    // useEffect(() => {
-    //     axiosSecure.get(`/usersBiodata/${user?.email}`)
+    useEffect(() => {
+        axiosSecure.get(`/userInfo/${user?.email}`)
 
 
-    //         .then(data => {
-    //             seetItem(data.data)
-    //         })
-    // }, [axiosSecure, user?.email])
+            .then(data => {
+                seetItem(data.data)
+            })
+    }, [axiosSecure, user?.email])
 
-    // console.log(item?.name)
+    console.log(item?.name)
 
-    const price = 5
-
+    let price = totalPricePlusOne
+    console.log(price)
 
     useEffect(() => {
         if (price > 0) {
@@ -36,15 +39,35 @@ const PaymentCheckOutPage = () => {
                     setClientSecret(res.data.clientSecret)
                 })
         }
-    }, [axiosSecure])
+    }, [axiosSecure, price])
 
 
+        const { data: cartData } = useQuery({
+            queryKey: ['cartItemData'],
+            queryFn: async () => {
+                const res = await axiosSecure.get('/cartItemData');
+                return res.data;
+            }
+        });
+        console.log(cartData?.productName)
 
+        if (Array.isArray(cartData)) {
+            cartData.forEach(item => {
+                // console.log(item.productName);
+                return item
+                // console.log(item.description);
+            });
+        } else {
+            console.log('cartData is not an array');
+        }
+
+
+        // console.log(item.productName);
 
     const handleSubmit = async (event) => {
         event.preventDefault()
         console.log('btn click')
-       
+
 
         if (!stripe || !elements) {
             return;
@@ -76,9 +99,9 @@ const PaymentCheckOutPage = () => {
                 billing_details: {
                     email: user?.email || 'anonymus User'
                 }
-            
+
             }
-        
+
         })
         if (confirmError) {
             console.log('confirm error found', confirmError)
@@ -96,42 +119,50 @@ const PaymentCheckOutPage = () => {
             if (paymentIntent.status === 'succeeded') {
                 console.log('payment successfully')
 
-                // // save payment info to the database
-                // const payment = {
-                //     name: item?.name,
-                //     email: user?.email,
-                //     userId: item?.userId,
-                //     mobileNumber: item?.mobileNumber,
-                //     price: price,
-                //     status: 'pending',
-                //     transictionId: paymentIntent?.id,
-                // }
-                // const res = await axiosSecure.post('/payments', payment)
-                // console.log(res.data)
-                // if (res.data?.insertedId) {
-                //     Swal.fire({
-                //         position: "center",
-                //         icon: "success",
-                //         title: "Your Payment is Succesfully",
-                //         text: `Transaction id: ${paymentIntent?.id}`,
-                //         showConfirmButton: false,
-                //         timer: 1500
-                //     });
-                // }
+                // save payment info to the database
+                const payment = {
+                    userName: item?.name,
+                    email: user?.email,
+                    phoneNumber: item?.phoneNumber,
+                    totalPrice: totalPricePlusOne,
+                    subtotal: totalPrice,
+                    country: item?.country,
+                    streetAddress: item?.streetAddress,
+                    town: item?.town,
+                    productName: item?.productName,
+                    productImage: item?.productImage,
+                    description: item?.description,
+                    status: 'success',
+                    transictionId: paymentIntent?.id,
+                }
+                const res = await axiosSecure.post('/paymentInfo', payment)
+                console.log(res.data)
+                console.log('payment info save')
+                if (res.data?.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your Payment is Succesfully",
+                        text: `Transaction id: ${paymentIntent?.id}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
 
             }
 
 
         }
-       
+
     };
 
     return (
         <div className="max-w-2xl mx-auto ">
             <form onSubmit={handleSubmit}>
-                <CardElement className="border border-black  p-3 rounded-lg"
+                <CardElement className="border border-black  p-3 rounded-lg "
                     options={{
                         style: {
+
                             base: {
                                 fontSize: '24px',
                                 color: '#000000',
@@ -154,6 +185,9 @@ const PaymentCheckOutPage = () => {
         </div>
     );
 };
-
+PaymentCheckOutPage.propTypes = {
+    totalPricePlusOne: PropTypes.number.isRequired,
+    totalPrice: PropTypes.number.isRequired,
+}
 
 export default PaymentCheckOutPage;

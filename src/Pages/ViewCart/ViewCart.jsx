@@ -2,10 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hoocks/UseAxiosSecure/useAxiosSecure";
 import ViewCartItem from "./ViewCartItem";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 
 const ViewCart = () => {
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalPricePlusOne, setTotalPricePlusOne] = useState(0);
     const axiosSecure = useAxiosSecure();
 
     const { data: cartData, refetch } = useQuery({
@@ -15,6 +18,18 @@ const ViewCart = () => {
             return res.data;
         }
     });
+
+    useEffect(() => {
+        if (Array.isArray(cartData)) {
+            const calculatedTotalPrice = cartData.reduce((total, item) => total + item.productPrice, 0);
+            setTotalPrice(calculatedTotalPrice);
+            setTotalPricePlusOne(calculatedTotalPrice + 1);
+        }
+    }, [cartData]);
+
+
+    console.log(totalPrice)
+    console.log(totalPricePlusOne)
     return (
         <div className="mt-20">
             <div className="flex gap-10 flex-col lg:flex-row">
@@ -30,7 +45,7 @@ const ViewCart = () => {
                     <h3 className="text-xl font-bold">Cart Totals</h3>
                     <div className="flex justify-between p-4 px-8">
                         <p>Sub total</p>
-                        <p className="text-red-500">$120</p>
+                        <p className="text-red-500">${totalPrice}</p>
                     </div>
                     <div className="flex justify-between p-4 px-8">
                         <p>Shippping</p>
@@ -40,7 +55,7 @@ const ViewCart = () => {
                     
                     <div className="flex justify-between p-4 px-8">
                         <p className="font-bold text-lg">Total</p>
-                        <p className="text-red-500 text-xl font-bold">$121</p>
+                        <p className="text-red-500 text-xl font-bold">${totalPricePlusOne}</p>
                     </div>
                     <div className="">
                         <Link to='/checkOutPage'>

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hoocks/UseAxiosSecure/useAxiosSecure";
 import ProductSection from "./ProductSection";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 
@@ -24,7 +24,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 600,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -35,6 +35,8 @@ const style = {
 const CheckOutpage = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const axiosSecure = useAxiosSecure();
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalPricePlusOne, setTotalPricePlusOne] = useState(0);
 
 
 
@@ -60,7 +62,7 @@ const CheckOutpage = () => {
         // navigate('/order-success'); // Example navigation
     };
 
-    const { data: cartItem } = useQuery({
+    const { data: cartItem  } = useQuery({
         queryKey: ['cartItemData'],
         queryFn: async () => {
             const res = await axiosSecure.get('/cartItemData')
@@ -68,6 +70,18 @@ const CheckOutpage = () => {
         }
     })
     // console.log(cartItem)
+
+    useEffect(() => {
+        if (Array.isArray(cartItem)) {
+            const calculatedTotalPrice = cartItem.reduce((total, item) => total + item.productPrice, 0);
+            setTotalPrice(calculatedTotalPrice);
+            setTotalPricePlusOne(calculatedTotalPrice + 1);
+        }
+    }, [cartItem]);
+
+
+    console.log(totalPrice)
+    console.log(totalPricePlusOne)
 
 
 
@@ -192,14 +206,14 @@ const CheckOutpage = () => {
                         <div className="  bg-slate-100 w-full p-4 ">
                             <p className="text-2xl font-bold">Product</p>
                             <div className="flex flex-col gap-5">
-                                {cartItem?.map(cart => <ProductSection key={cart._id} cart={cart} ></ProductSection>)}
+                                {cartItem?.map(cart => <ProductSection key={cart._id} cart={cart}  ></ProductSection>)}
                             </div>
 
 
                             <h3 className="text-xl font-bold">Cart Totals</h3>
                             <div className="flex justify-between p-4 px-8">
                                 <p>Sub total</p>
-                                <p className="text-red-500">$120</p>
+                                <p className="text-red-500">${totalPrice}</p>
                             </div>
                             <div className="flex justify-between p-4 px-8">
                                 <p>Shippping</p>
@@ -209,7 +223,7 @@ const CheckOutpage = () => {
 
                             <div className="flex justify-between p-4 px-8">
                                 <p className="font-bold text-lg">Total</p>
-                                <p className="text-red-500 text-xl font-bold">$121</p>
+                                <p className="text-red-500 text-xl font-bold">${totalPricePlusOne}</p>
                             </div>
 
                         </div>
@@ -253,9 +267,9 @@ const CheckOutpage = () => {
                         Confirm Your Payment
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <div className="  ">
+                        <div className=" ">
                             <Elements stripe={stripePromise}>
-                                <PaymentCheckOutPage></PaymentCheckOutPage>
+                                <PaymentCheckOutPage totalPricePlusOne={totalPricePlusOne} totalPrice={totalPrice}></PaymentCheckOutPage>
                             </Elements>
                         </div>
                     </Typography>

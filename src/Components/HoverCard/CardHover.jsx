@@ -18,7 +18,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 const CardHover = ({ data ,refetch}) => {
     const {user} = useContext(AuthContext)
     console.log(user?.email)
-    const { name, image, price, weight, rating, totalRatings,availability } = data;
+    const { name, image, price, weight, rating, totalRatings,availability, description } = data;
 
 
 
@@ -33,7 +33,8 @@ const CardHover = ({ data ,refetch}) => {
             productName: name,
             productImage: image,
             productPrice: price,
-            email :  user?.email
+            email :  user?.email,
+            description:description,
            
         }
         console.log('button clicked')
