@@ -11,6 +11,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import PaymentCheckOutPage from "./PaymentPageComponent/PaymentCheckOutPage";
+
+
+
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -93,7 +101,7 @@ const CheckOutpage = () => {
         // Close the modal
         handleClose();
         // Proceed with the order
-        await processOrder({});
+        // await processOrder({});
     };
 
 
@@ -242,15 +250,17 @@ const CheckOutpage = () => {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Confirm Payment
+                        Confirm Your Payment
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Are you sure you want to proceed with Direct Payment?
+                        <div className="  ">
+                            <Elements stripe={stripePromise}>
+                                <PaymentCheckOutPage></PaymentCheckOutPage>
+                            </Elements>
+                        </div>
                     </Typography>
-                    <Button onClick={handleConfirmPayment} color="primary" variant="contained" sx={{ mt: 2 }}>
-                        Confirm
-                    </Button>
-                    <Button onClick={handleClose} color="secondary" variant="contained" sx={{ mt: 2 }}>
+                    
+                    <Button onClick={handleConfirmPayment} color="secondary" variant="contained" sx={{ mt: 2 }}>
                         Cancel
                     </Button>
                 </Box>
